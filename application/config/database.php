@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'SORAWIT\SQL2008',
+	'hostname' => 'SORAWIT\SQLEXPRESS',
 	'username' => 'sa',
-	'password' => 'prosoft@12345',
+	'password' => '1234',
 	'database' => 'db_siriluk_shop',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
