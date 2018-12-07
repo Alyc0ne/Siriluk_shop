@@ -119,9 +119,9 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style='background-color:#DCDCDC;'>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">New Unit (เพิ่มหน่วยนับ)</h4>
+          <h4 class="modal-title" style='color:black;'>New Unit (เพิ่มหน่วยนับ)</h4>
         </div>
         <div class="modal-body">
           <?php
