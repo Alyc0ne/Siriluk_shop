@@ -24,17 +24,16 @@
     <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>extensions/content/Default/Messenger/messenger.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>extensions/content/Default/Messenger/messenger-theme-future.css" rel="stylesheet" />
-
 </head> 
-<body class="@Class">
-    <div class="wrapper-menu @classOpen" style="background-color:white; !important">
-        <?php include('LeftMenu.php'); ?>  
-    </div>
-    <div class="wrapper-body  @classOpen">
-        <div class="wrapper-header" style="background-color:white; !important">
-           <!-- @Html.Partial("~/Views/MP/UC/Header.cshtml")-->
-        </div>
-        <div class="wrapper-content">
+<body>
+    <!-- <div class="wrapper-menu @classOpen" style="background-color:white; !important">
+        <?php //include('LeftMenu.php'); ?>  
+    </div> -->
+    <div>
+        <!-- <div class="wrapper-header" style="background-color:white; !important">
+           @Html.Partial("~/Views/MP/UC/Header.cshtml")
+        </div> -->
+        <div>
             <?php $this->load->view($path_link); ?>
         </div>
     </div>

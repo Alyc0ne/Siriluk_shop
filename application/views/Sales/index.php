@@ -6,22 +6,20 @@ body {
 </style>
 
 <?php
-echo "<div class='row'>";
-  echo "<div class='col-md-1'></div>";
+echo "<div class='row' style='paading-right:5px;'>";
   //Left
-  echo "<div class='col-md-6'>";
-    echo "<input list='Goods' id='GoodsBarcode' style='width:80%;height:30px;margin:auto;'>";
+  echo "<div class='col-md-8' class='text_c' style='background-color:#f2f2f2;text-align:center;'>";
+    echo "<input list='Goods'  id='GoodsBarcode' style='width:75%;height:30px'>";
     echo "<datalist id='Goods'>";
     echo "</datalist>";
   echo "</div>";
 
   //Right
-  echo "<div class='col-md-5'>";
+  echo "<div class='col-md-4' style='background-color:#f2f2f2;'>";
     echo "<div class='header-box-right'>";
         include('UC/sales_rightbox.html');  
     echo "</div>";
   echo "</div>";
-  //echo "<div class='col-md-1'></div>";
 echo "</div>";
 
 ?>
