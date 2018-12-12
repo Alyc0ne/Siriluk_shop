@@ -43,6 +43,9 @@
 .w_p30{
     width:30%;
 }
+.w_p35{
+    width:35%;
+}
 .w_p40{
     width:40%;
 }
@@ -78,9 +81,6 @@
 .text_r{
     text-align: right;
 }
-.p_all{
-    padding: 5px;
-}
 .bg_white{
     background-color: white;
 }
@@ -102,22 +102,70 @@
 .p_all10{
     padding: 10px;
 }
+.p_all15{
+    padding: 15px;
+}
+.p_all20{
+    padding: 20px;
+}
 .sub_line{
     border:solid 0.3px #bfbfbf;
     width:100%;
     margin-left:10px
 }
-.h_p100{
-    height: 100%;
+.h_p5{
+    height: 5%;
+}
+.h_p10{
+    height: 10%;
+}
+.h_p20{
+    height: 20%;
+}
+.h_p25{
+    height: 25%;
+}
+.h_p40{
+    height: 40%;
+}
+.h_p75{
+    height: 75%;
+}
+.p_r15{
+    padding-right: 15px; 
+}
+.p_r20{
+    padding-right: 20px; 
 }
 </style>
 <body>
-    <div class="container-fluid">
-        <div class="row">
+    <div class="container-fluid w-100 h-100" id='transacSales'>
+        <!-- <div class="row align-items-start"></div>
+        <div class="row align-items-end">
+            <div style="width:100%;border-top:solid 1px #bfbfbf"></div>
+            <div class="bg_white w_p100 mh_40"></div>
+            <div class='w_p60 p_all10 f_l'>รวมเงิน : </div>
+            <input type='text' class='p_all10 text_r w_p40 f_r p_r20' style='border:none;font-weight:bold;' id='sub_total' name='sub_total' value='1,000.00' readonly></input>
+            <div class='clear_b sub_line'></div>
+            <div class="bg_white w_p100 mh_40"></div>
+            <div class='w_p60 p_all10 f_l'>ส่วนลด : </div>
+            <input type='text' class='p_all10 text_r w_p40 f_r p_r20 _number' style='font-weight:bold;' id='discount' name='discount' value='5.00%'></input>
+            <div class='clear_b sub_line'></div>
+
+            <div class="bg_white w_p100 mh_40"></div>
+            <div class='w_p60 p_all10 f_l'>จำนวนเงินทั้งสิ้น : </div>
+            <input type='text' class='p_all10 text_r w_p40 f_r p_r20' style='border:none;font-weight:bold;' id='total' name='total' value='5.00%' readonly></input>
+            <div class='clear_b'></div>
+            
+            <div class="w_p100 mh_50"></div>
+            <button class='btn btn-success w_p100 h_p50 p_all20'>จ่ายชำระ</button>
+        </div> -->
+
+        <!-- <div class="row">
             <div id='transacSales' name='transacSales' class="col-xs-5 col-sm-6 col-lg-12" style="border-left:solid 1px #bfbfbf;padding-left: 0px !important;padding-right: 0px !important;">
 
             </div>
-        </div>
+        </div> -->
     </div>
 </body>
 

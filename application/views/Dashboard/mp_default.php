@@ -26,9 +26,9 @@
     <link href="<?php echo base_url(); ?>extensions/content/Default/Messenger/messenger-theme-future.css" rel="stylesheet" />
 </head> 
 <body>
-    <!-- <div class="wrapper-menu @classOpen" style="background-color:white; !important">
+    <div class="wrapper-menu @classOpen" style="background-color:white; !important">
         <?php //include('LeftMenu.php'); ?>  
-    </div> -->
+    </div>
     <div>
         <!-- <div class="wrapper-header" style="background-color:white; !important">
            @Html.Partial("~/Views/MP/UC/Header.cshtml")
