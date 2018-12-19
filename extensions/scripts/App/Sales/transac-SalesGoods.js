@@ -1,15 +1,17 @@
+var transacSalesGoods = new setTransac();
+
 $(document).ready(function () {
-    var transacSalesGoods = new setTransac();
     transacSalesGoods.init();
 });
 
 function setTransac() {
     var _t = this;
-    _t.Name = "transacSales";
+    _t.Name = "Sales-Page";
     _t.Element = null;
     _t.init = function(){
         _t.htmlControl.getElement();
         _t.htmlControl.genGrid();
+        //11
     };
 
     _t.htmlControl = {
@@ -18,69 +20,62 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-            var fullGrid = $('<div></div>');
-            var gridStart = $('<div class="row align-items-start w_p100 h_p75" style="border-left:solid 1px #bfbfbf;"></div>"');
-            var gridEnd = $('<div class="row align-items-end w_p100 h_p25" style="border-left:solid 1px #bfbfbf;"></div>');
+            var LeftBox = $('<div class="col-8" style="background-color:#f2f2f2;text-align:center;"></div>');
+            //LeftBox.append("<input list='Goods' class='w-75' id='GoodsBarcode' style='height:30px'>");
+            //LeftBox.append("<datalist id='Goods'></datalist>");
 
-            //Header
-            /*var Header = $('<div id="transacSales-H"></div>');
-            Header.append("<div style='background-color:aquamarine;width: 500px;display: table;height: 30px;'>");
-            Header.append("<div class='w_p10 f_l p_all'>#</div>");
-            Header.append("<div class='w_p15 f_l p_all'>รหัสสินค้า</div>");    
-            Header.append("<div class='w_p30 f_l p_all'>ชื่อสินค้า</div>");     
-            Header.append("<div class='w_p15 f_l text_c p_all'>จำนวน</div>");     
-            Header.append("<div class='w_p15 f_l text_r p_all'>ราคา/หน่วย</div>");     
-            Header.append("<div class='w_p15 f_l text_r p_all'>จำนวนเงิน</div>");
-            Header.append("</div>");*/
+            LeftBox.append("<a onclick='ShowModalGoods();'>Please CUM !!</div></a>");
 
-            //Detail
-            //var Detail = $('<div id="transacSales-D" style="max-height:400px;height:400px;"></div>');
-            gridStart.append("<div class='w_p100 text_c bg_white' style='border-bottom:solid 1px #bfbfbf;height:80px;padding:5px;line-height:60px;'>ไม่มีข้อมูลสินค้า</div>");
-            fullGrid.append(gridStart);
-            //grid.append(Header);
-            //grid.append(Detail);
+            var Rightbox = $('<div class="col-4" style="min-height: 768px !important;"></div>');
+            var gridStart = $('<div class="row h_100" style="border-left:solid 1px #bfbfbf;"></div>"');
+            //var gridEnd = $('<div class="row" style="border-left:solid 1px #bfbfbf;"></div>');
 
-            //Payment
+            //var transac_body = $('<div class="w-100 h_10 p-3 text_c bg_white" style="border:solid 1px red;height:80px;padding:5px;line-height:60px;"></div>');
+            gridStart.append("<div class='col-12 align-self-start p_a5' style='overflow:auto;height:75%;' id='transac-body'></div>");
+            //gridStart.append("<div class='w-100 h_10 p-3 text-center bg_white' style='border:solid 1px red;height:80px;'>ไม่มีข้อมูลสินค้า</div>");
+            //transac_body.append("<div class='w-100 h-100 p-3'>ไม่มีข้อมูลสินค้า</div>");
+            //gridStart.append(transac_body);
+            //Rightbox.append(gridStart);
 
-            var sub_total = $('<div class="bg_white w_p100 h_p20 p_all10"></div>');
-            sub_total.append("<div class='w_p60 f_l'>รวมเงิน : </div>");
-            sub_total.append("<input type='text' class='text_r w_p40 f_r p_r20' style='border:none;font-weight:bold;' id='sub_total' name='sub_total' value='1,000.00' readonly></input>");
+            var gridEnd = $('<div class="col-12 align-self-end" style="border-top:solid 1px #bfbfbf;"></div>');
+            var sub_total = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
+            sub_total.append("<div class='w-75 float-left'>รวมเงิน : </div>");
+            sub_total.append("<input type='text' class='w-25 float-right text-right' style='border:none;font-weight:bold;' id='sub_total' name='sub_total' value='1,000.00' readonly></input>");
             sub_total.append("<div class='clear_b sub_line'></div>");
             gridEnd.append(sub_total);
 
-            //Discount
-            var discount = $('<div class="bg_white w_p100 h_p20 p_all10"></div>');
-            discount.append("<div class='w_p60 f_l'>ส่วนลด : </div>");
-            discount.append("<input type='text' class='text_r w_p40 f_r p_r20 _number' style='font-weight:bold;' id='discount' name='discount' value='5.00%'></input>");
+            var discount = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
+            discount.append("<div class='w-75 float-left'>ส่วนลด : </div>");
+            discount.append("<input type='text' class='w-25 float-right text-right _number' style='font-weight:bold;' id='discount' name='discount' value='5.00%'></input>");
             discount.append("<div class='clear_b sub_line'></div>");
             gridEnd.append(discount);
 
-            //Total
-            var total = $('<div class="bg_white w_p100 h_p20 p_all10"></div>');
-            total.append("<div class='w_p60 f_l'>จำนวนเงินทั้งสิ้น : </div>");
-            total.append("<input type='text' class='text_r w_p40 f_r p_r20' style='border:none;font-weight:bold;' id='total' name='total' value='5.00%' readonly></input>");
+            var total = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
+            total.append("<div class='w-75 float-left'>จำนวนเงินทั้งสิ้น : </div>");
+            total.append("<input type='text' class='w-25 float-right text-right' style='border:none;font-weight:bold;' id='total' name='total' value='5.00%' readonly></input>");
             total.append("<div class='clear_b'></div>");
             gridEnd.append(total);
 
-            //Button Pay
-            var pay = $('<div class="w_p100 h_p40 p_all10"></div>');
-            pay.append("<button class='btn btn-success w_p100 h_p100 p_all20'>จ่ายชำระ</button>");
+            var pay = $('<div class="w-100"></div>');
+            pay.append("<button class='btn btn-success w-100 p-3'>จ่ายชำระ</button>");
             gridEnd.append(pay);
-            fullGrid.append(gridEnd);
+            gridStart.append(gridEnd);
 
-            _t.Element.html(fullGrid);
-            //_t.Element.html(gridEnd);
+            Rightbox.append(gridStart);
 
-            /*var htmlDetail = "<div>";
-            htmlDetail += "<div class='w_20 f_l text_of'>1</div>";
-            htmlDetail += "<div class='w_80 f_l text_of'>150990</div>";
-            htmlDetail += "<div class='w_80 f_l text_of'>ทดสอบการเพิ่มสินค้า</div>";
-            htmlDetail += "<div class='w_80 f_l text_of text_c'>10</div>";
-            htmlDetail += "<div class='w_90 f_l text_of text_r'>250</div>";
-            htmlDetail += "<div class='w_80 f_l text_of text_r'>2,500</div>"
-            htmlDetail += "</div>";*/
-            //htmlDetail += "<div class='clear_b'></div>";
-            //$("#transac-d-SalesGoods").append(htmlDetail);
+            _t.Element.append(LeftBox);
+            _t.Element.append(Rightbox);
+        }
+    };
+    _t.gridControl = {
+        addData: function () {
+            var gridData = $('<div class="w-100 h-25 p-3">ทดสอบ</div>');
+            var _t_body = _t.Element.find('#transac-body');
+            var product = $('<div class="w-100 h_10 p-3 bg_white m_b5" style="border:solid 1px red;height:80px;"></div>');
+            product.append("<div class='w_10 float-left text-center'><input type='number' class='w-100' name='GoodsQty' min='1' max='99'></div>");
+            product.append("<div class='w-50 float-left text-left'>เอสเพรสโซ่พาโทนัม</div>");
+            product.append("<div class='w_40 float-left text-right'>2,000.00</div>");
+            _t_body.append(product);
         }
     };
 };

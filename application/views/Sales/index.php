@@ -1,25 +1,45 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/App/Sales/Sales.js"></script>
+<script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/App/Sales/transac-SalesGoods.js"></script>
 <style type="text/css">
-body {
-    overflow:hidden;
-}
+  body{
+      margin: 0 !important;
+      /*overflow:hidden;*/
+  }
+  .h_10{
+      height: 10% !important;
+  }
+  .h_80{
+      height: 80% !important;
+  }
+  .h_100{
+      height: 100% !important;
+  }
+  .w_10{
+      width: 10% !important;
+  }
+  .w_40{
+      width: 40% !important;
+  }
+  .p_a0{
+      padding: 0px !important;
+  }
+  .p_a5{
+      padding: 5px !important;
+  }
+  .m_t5{
+      margin-top: 5px !important;
+  }
+  .m_b5{
+      margin-bottom: 5px !important;
+  }
 </style>
 
 <?php
-echo "<div class='row' style='paading-right:5px;'>";
-  //Left
-  echo "<div class='col-md-8' class='text_c' style='background-color:#f2f2f2;text-align:center;'>";
-    echo "<input list='Goods'  id='GoodsBarcode' style='width:75%;height:30px'>";
-    echo "<datalist id='Goods'>";
-    echo "</datalist>";
-  echo "</div>";
-
-  //Right
-  echo "<div class='col-md-4' style='background-color:#f2f2f2;'>";
-    echo "<div class='header-box-right'>";
-        include('UC/sales_rightbox.html');  
+    echo "<div class='container h_100'>";
+      echo "<div class='row' style='min-width: 1360px !important;min-height: 768px !important;' id='Sales-Page'>";
+          
+          
+      echo "</div>";
     echo "</div>";
-  echo "</div>";
-echo "</div>";
 
 ?>
