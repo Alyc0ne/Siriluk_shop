@@ -1,24 +1,4 @@
-﻿$(function() {
-    $(".wrapper-menu .ibiz-menu").click(function(e) {
-        e.preventDefault();
-        if ($(".wrapper-menu").hasClass("open")) {
-            $(".wrapper-menu").removeClass("open");
-            $(".wrapper-body").removeClass("open");
-            $(".wrapper-menu .ibiz-logo").removeClass("open");
-            //addCookieLeftMenu(false);
-        } else {
-
-            $(".wrapper-menu").addClass("open");
-            $(".wrapper-body").addClass("open");
-            setTimeout(function() {
-                    $(".wrapper-menu .ibiz-logo").addClass("open");
-                }, 150)
-                //addCookieLeftMenu(true);
-        }
-    });
-});
-
-function GetPath() {
+﻿function GetPath() {
     var pathArray = window.location.pathname.split('/');
     return pathArray;
 }
@@ -268,4 +248,18 @@ function clearModal(name) {
             .prop("checked", "")
             .end();
     })
+}
+
+//Goods
+function ShowModalGoods() {
+    openloading(true);
+    //if(checkDataTable('Unit')){
+        $("#GoodsNo").val(GenRunningNumber("Goods"));
+        //GetDataJson('Unit','#GoodsUnit');
+        $("#GoodsModal").modal();
+        setTimeout(function(){
+            $("#GoodsBarcode").focus();
+            openloading(false);
+        },700);
+    //}
 }

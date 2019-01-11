@@ -1,4 +1,4 @@
-USE [db_siriluk_shop]
+USE [db_sl_shop]
 GO
 
 SET ANSI_NULLS ON
