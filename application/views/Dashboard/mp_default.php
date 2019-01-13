@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/site.css">
-
+    <script>var base_url = '<?php echo base_url() ?>';</script>
 </head>
 <body>
     <?php
         $this->load->view("Shared/Modal/Goods");
+        $this->load->view("Shared/Modal/Unit");
     ?>
     <div class="row w-100" style='height: 5%;max-height: 5%;'>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark h_5">
@@ -35,18 +36,26 @@
     <div class="row" style="height:95%;">
         <div class="col-2 col-md-2" id='left-page' style="background-color:#f8f9fa!important;">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin:10px!important;">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</a>
-                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">Messages</a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="<?php echo base_url();?>Dashboard" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="<?php echo base_url();?>Sales/Sales" role="tab" aria-controls="v-pills-profile" aria-selected="false">ขายสินค้า (Sell)</a>
+                <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">สินค้า (Goods)</a>
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
                         <ul id="sub-menu" >
-                            <li><a onclick="ShowModalGoods();">เพิ่มสินค้า (New)</a></li>
-                            <li>รายการสินค้า (List)</li>
+                            <li><a onclick="ShowModalGoods();">เพิ่มสินค้า</a></li>
+                            <li>รายการสินค้า</li>
                         </ul>
                     </div>
                 </div>
-                <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">Settings</a>
+                <a class="nav-link" id="v-pills-unit-tab" data-toggle="pill" href="#v-pills-unit" role="tab" aria-controls="v-pills-unit" aria-selected="false">หน่วยนับ (Unit)</a>
+                <div class="tab-content" id="v-pills-tabContent">
+                    <div class="tab-pane fade" id="v-pills-unit" role="tabpanel" aria-labelledby="v-pills-unit-tab">
+                        <ul id="sub-menu" >
+                            <li><a onclick="ShowModalUnit();">หน่วยนับสินค้า</a></li>
+                            <li>รายการหน่วยนับ</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
