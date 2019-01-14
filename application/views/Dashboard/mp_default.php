@@ -20,6 +20,14 @@
         $this->load->view("Shared/Modal/Goods");
         $this->load->view("Shared/Modal/Unit");
     ?>
+    <div class="wrap">
+        <div class="bg-backdrop"></div>
+        <div class="loading">
+            <div class="bounceball"></div>
+            <div class="text">NOW LOADING</div>
+        </div>
+    </div>
+
     <div class="row w-100" style='height: 5%;max-height: 5%;'>
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark h_5">
             <a class="navbar-brand" href="#">SL </a> 
@@ -36,8 +44,8 @@
     <div class="row" style="height:95%;">
         <div class="col-2 col-md-2" id='left-page' style="background-color:#f8f9fa!important;">
             <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="margin:10px!important;">
-                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="<?php echo base_url();?>Dashboard" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
-                <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="<?php echo base_url();?>Sales/Sales" role="tab" aria-controls="v-pills-profile" aria-selected="false">ขายสินค้า (Sell)</a>
+                <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-home" aria-selected="true">Home</a>
+                <a class="nav-link" id="v-pills-sales-tab" data-toggle="pill" href="#" role="tab" aria-controls="v-pills-sales" aria-selected="false">ขายสินค้า (Sell)</a>
                 <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">สินค้า (Goods)</a>
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
@@ -60,12 +68,34 @@
         </div>
 
         <div class="col-10 col-md-10" id='right-page'>
+            <div class="tab-content wh100" id="v-pills-tabContent">
+                <div class="tab-pane fade show wh100 active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <?php $this->load->view("Home/index"); ?>
+                </div>
+                <div class="tab-pane fade wh100" id="v-pills-sales" role="tabpanel" aria-labelledby="v-pills-sales-tab">
+                    <?php $this->load->view("Sales/index"); ?>
+                </div>
+                <div class="tab-pane fade wh100" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">...</div>
+                <div class="tab-pane fade wh100" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+            </div>
+
+
             <?php 
-            if ($path_link != "") {
-                $this->load->view($path_link);
+            /*if (isset($_COOKIE['PathLink'])) {
+                //if(){
+                    //echo "<div class='tab-content' id='v-pills-tabContent'>";
+                        //echo "<div class='tab-pane fade' id='v-pills-profile' role='tabpanel' aria-labelledby='v-pills-profile-tab'>";
+                        //$this->load->view($path_link);
+                        //echo "<h1>Hello</h1>";
+                        //echo "</div>";
+                    //echo "</div>";
+                //}
+                
+                $this->load->view($_COOKIE['PathLink']);
+                $_COOKIE['PathLink'] = "";
             }else {
-                echo "KUY";
-            }
+                echo "KUY123";
+            }*/
             ?>
         </div>
     </div>

@@ -11,7 +11,7 @@ $("#btn-Save").click(function (e){
         openloading(true);
         $.ajax({
             type: 'POST',
-            url: "<?php echo base_url(); ?>Goods/Goods/BindSave",
+            url: base_url + "Goods/Goods/BindSave",
             data: {
                 "goods_no" : $("#GoodsNo").val(),
                 "goods_barcode" : $("#GoodsBarcode").val(),

@@ -1,4 +1,7 @@
-﻿function GetPath() {
+﻿var navLink_Click = "";
+var path_link = "";
+
+function GetPath() {
     var pathArray = window.location.pathname.split('/');
     return pathArray;
 }
@@ -24,6 +27,16 @@ $(document).on("keypress", "._number", function(e) {
         return false;
         e.preventDefault();
     }
+});
+
+$(document).on("click", ".nav-link", function () {
+    openloading(true);
+    var ID = this.getAttribute('aria-controls');
+    setTimeout(function(){ 
+        $("#right-page #v-pills-tabContent").find("div.active").removeClass("show active");
+        $("#right-page #v-pills-tabContent").find("div#" + ID).addClass("show active");
+        openloading(false);
+    }, 1000);         
 });
 
 $(document).on("blur", "._number", function(e) {
@@ -253,13 +266,24 @@ function clearModal(name) {
 //Goods
 function ShowModalGoods() {
     openloading(true);
-    //if(checkDataTable('Unit')){
+    if(checkDataTable('Unit')){
         $("#GoodsNo").val(GenRunningNumber("Goods"));
-        //GetDataJson('Unit','#GoodsUnit');
+        GetDataJson('Unit','#GoodsUnit');
         $("#GoodsModal").modal();
         setTimeout(function(){
             $("#GoodsBarcode").focus();
             openloading(false);
         },700);
-    //}
+    }
+}
+
+function openloading(type) {
+    if (type) {
+        $(".wrap").show();
+    }else{
+        setTimeout(function(){ 
+            $(".wrap").hide(); 
+            result = true;
+        }, 500);
+    }
 }

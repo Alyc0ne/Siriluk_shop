@@ -8,7 +8,7 @@ class Sales extends CI_Controller{
     public function index()
     {
         $data['path_link'] = "Sales/index";
-        $this->load->view("Dashboard/mp_default",$data);
+        echo json_encode($data);
     }
 
     public function getGoods(){

@@ -26,7 +26,7 @@ $("#btn-SaveUnit").click(function (e){
         openloading(true);
         $.ajax({
             type: 'POST',
-            url: "<?php echo base_url(); ?>Setting/Unit/BindSave",
+            url: base_url + "Setting/Unit/BindSave",
             data: {
                 "unit_no" : $("#UnitNo").val(),
                 "unit_name" : $("#UnitName").val(),
