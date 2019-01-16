@@ -37,6 +37,12 @@ class BaseSystem extends CI_Model
         }
         fclose($objCreate);
     }
+
+    public function GetGoodsByBarcode($GoodsBarcode)
+    {
+        $result = $this->db->where('GoodsBarcode',$GoodsBarcode)->get('smGoods')->row_array();
+        return $result;
+    }
 }
       
 ?>

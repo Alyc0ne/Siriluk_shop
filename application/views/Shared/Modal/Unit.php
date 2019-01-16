@@ -5,7 +5,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">New Unit (เพิ่มหน่วนยับ)</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">New Unit (เพิ่มหน่วนนับ)</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -13,9 +13,9 @@
       <div class="modal-body">
         <form id='frmUnit'>
             <div class="form-group row">
-                <label for="GoodsNo" class="col-sm-2 col-form-label require">รหัสหน่วยนับ : </label>
+                <label for="UnitNo" class="col-sm-2 col-form-label require">รหัสหน่วยนับ : </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="GoodsNo" name="GoodsNo" data-maxlength='10' disabled>
+                    <input type="text" class="form-control" id="UnitNo" name="UnitNo" data-maxlength='10' disabled>
                 </div>
             </div>
             <div class="form-group row">
@@ -34,7 +34,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id='btn-SaveUnit'>Save changes</button>
       </div>
     </div>
   </div>

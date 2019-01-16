@@ -6,12 +6,12 @@ $(document).ready(function() {
     });
 });
 
-$("#btn-Save").click(function (e){
-    if (bindValidate("#frmGoods")){
+$(document).on("click", "#btn-Save-Goods", function () {
+    //if (bindValidate("#frmGoods")){
         openloading(true);
         $.ajax({
             type: 'POST',
-            url: base_url + "Goods/Goods/BindSave",
+            url: base_url + "Goods/GoodsController/BindSave",
             data: {
                 "goods_no" : $("#GoodsNo").val(),
                 "goods_barcode" : $("#GoodsBarcode").val(),
@@ -33,5 +33,5 @@ $("#btn-Save").click(function (e){
                 //openloading(false);
             }
         });
-    }
+    //}
 });

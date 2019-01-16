@@ -1,5 +1,5 @@
 <?php
-class Unit extends CI_Controller{
+class UnitController extends CI_Controller{
 
     public function _construct(){
       parent_construct();

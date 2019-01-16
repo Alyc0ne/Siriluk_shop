@@ -1,5 +1,5 @@
 <?php
-class Goods extends CI_Controller{
+class GoodsController extends CI_Controller{
 
     public function _construct(){
       parent_construct();
@@ -39,6 +39,21 @@ class Goods extends CI_Controller{
         }catch(Exception $e){
             $this->BaseSystem->WriteLogError($e->getMessage());
         }
+    }
+    
+    public function getGoods()
+    {
+        $Barcode = $this->input->post("GoodsBarcode");
+        $where = "";
+        if (is_numeric($Barcode)) {
+            $where = "Barcode = $Barcode";
+        }else {
+            $wher = "GoodsName = " + $Barcode;
+        }
+
+        $result = $this->BaseSystem->GetGoodsByBarcode($Barcode);
+
+        echo json_encode($result);
     }
 
 }

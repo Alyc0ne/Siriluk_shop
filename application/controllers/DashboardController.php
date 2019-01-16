@@ -1,5 +1,5 @@
 <?php
-class Dashboard extends CI_Controller{
+class DashboardController extends CI_Controller{
 
     public function _construct(){
       parent_construct();

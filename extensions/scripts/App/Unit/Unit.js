@@ -10,7 +10,7 @@ function ShowModalUnit() {
         success: function (e) {
             openloading(false);
             $("#UnitNo").val(e);
-            $("#ModalNewUnit").modal();
+            $("#UnitModal").modal();
             setTimeout(function(){
                 $("#UnitName").focus();
             },700);
@@ -21,12 +21,13 @@ function ShowModalUnit() {
     });
 }
 
-$("#btn-SaveUnit").click(function (e){
+
+$(document).on("click", "#btn-SaveUnit", function () {
     if (bindValidate("#frmUnit")){
         openloading(true);
         $.ajax({
             type: 'POST',
-            url: base_url + "Setting/Unit/BindSave",
+            url: base_url + "Unit/Unit/BindSave",
             data: {
                 "unit_no" : $("#UnitNo").val(),
                 "unit_name" : $("#UnitName").val(),
@@ -37,8 +38,8 @@ $("#btn-SaveUnit").click(function (e){
             success: function (e) {
                 openloading(false);
                 PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
-                $("#ModalNewUnit").modal('toggle');
-                clearModal("#ModalNewUnit");
+                $("#UnitModal").modal('toggle');
+                clearModal("#UnitModal");
             },
             error: function (e) {
                 //openloading(false);

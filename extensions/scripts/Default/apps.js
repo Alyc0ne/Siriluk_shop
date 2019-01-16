@@ -156,7 +156,7 @@ function GenRunningNumber(system) {
     var Running = "";
     $.ajax({
         type: 'POST',
-        url: "../Base/BaseController/GenRunningNumber",
+        url: base_url + "Base/BaseController/GenRunningNumber",
         data: { "System": system },
         datatype: "json",
         traditional: true,
@@ -175,7 +175,7 @@ function GetDataJson(system, idSelect2 = null) {
     var Result = "";
     $.ajax({
         type: 'POST',
-        url: "../Base/BaseController/GetDataJson",
+        url: base_url + "Base/BaseController/GetDataJson",
         data: { "System": system },
         datatype: "json",
         traditional: true,
@@ -212,7 +212,7 @@ function checkDataTable(system) {
     var result = false;
     $.ajax({
         type: 'POST',
-        url: "../Base/BaseController/checkDataTable",
+        url: base_url + "Base/BaseController/checkDataTable",
         data: {
             "System": system
         },

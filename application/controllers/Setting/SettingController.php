@@ -1,5 +1,5 @@
 <?php
-class Setting extends CI_Controller{
+class SettingController extends CI_Controller{
 
     public function _construct(){
       parent_construct();

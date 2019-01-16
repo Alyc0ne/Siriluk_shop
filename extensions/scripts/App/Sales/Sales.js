@@ -8,15 +8,12 @@ $("#discountCash").change(function(e) {
 
 });
 
-$(document).on("change", "#GoodsBarcode", function(ae) {
-    console.log(ae);
-    var system = "";
+$(document).on("change", "#GoodsBarcodeSearch", function(ae) {
     $.ajax({
         type: 'POST',
-        url: "GoodsBarcode/getGoods",
-        data: { "GoodsBarcode": GoodsBarcode },
-        datatype: "json",
-        traditional: true,
+        url: base_url + "Goods/GoodsController/getGoods",
+        dataType: 'json',
+        data: {GoodsBarcode: $("#GoodsBarcodeSearch").val()},
         async: false,
         success: function(e) {
             if(e != null){
@@ -28,7 +25,7 @@ $(document).on("change", "#GoodsBarcode", function(ae) {
             //openloading(false);
         }
     });
-    $("#GoodsBarcode").val("");
+    //$("#GoodsBarcodeSearch").val("");
 });
 
 $(document).on("click",".imageDel", function(e){

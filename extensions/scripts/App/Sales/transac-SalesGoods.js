@@ -23,7 +23,7 @@ function setTransac() {
         },
         genGrid: function () {
             var LeftBox = $('<div class="col-8" style="text-align:center;"></div>');
-            LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcode' style='height:30px;margin-top:2%;'>");
+            LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:30px;margin-top:2%;'>");
             LeftBox.append("<datalist id='Goods'></datalist>");
 
             //LeftBox.append("<a onclick='ShowModalGoods();'>Please CUM !!</div></a>");
