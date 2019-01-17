@@ -26,18 +26,10 @@ function setTransac() {
             LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:30px;margin-top:2%;'>");
             LeftBox.append("<datalist id='Goods'></datalist>");
 
-            //LeftBox.append("<a onclick='ShowModalGoods();'>Please CUM !!</div></a>");
-
             var Rightbox = $('<div class="col-4"></div>'); //style="min-height: 768px !important;"
             var gridStart = $('<div class="row h_100" style="border-left:solid 1px #bfbfbf;"></div>"');
-            //var gridEnd = $('<div class="row" style="border-left:solid 1px #bfbfbf;"></div>');
-
-            //var transac_body = $('<div class="w-100 h_10 p-3 text_c bg_white" style="border:solid 1px red;height:80px;padding:5px;line-height:60px;"></div>');
-            gridStart.append("<div class='col-12 align-self-start p_a5' style='overflow:auto;height:75%;' id='transac-body'></div>");
-            //gridStart.append("<div class='w-100 h_10 p-3 text-center bg_white' style='border:solid 1px red;height:80px;'>ไม่มีข้อมูลสินค้า</div>");
-            //transac_body.append("<div class='w-100 h-100 p-3'>ไม่มีข้อมูลสินค้า</div>");
-            //gridStart.append(transac_body);
-            //Rightbox.append(gridStart);
+            gridStart.append("<div class='col-12 align-self-start p_a5' style=';height:5%;border:solid 1px red;'></div>");
+            gridStart.append("<div class='col-12 align-self-start p_a5' style='overflow:auto;height:70%;' id='transac-body'></div>");
 
             var gridEnd = $('<div class="col-12 align-self-end" style="border-top:solid 1px #bfbfbf;padding:2px!important;"></div>');
             var sub_total = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
@@ -86,9 +78,9 @@ function setTransac() {
             var Goods = $('<div class="w-100 h_5 p-3 bg_white m_b5" id="GoodDetail" data-uid="' + RandomMath() + '"></div>');
             Goods.append("<div class='w_5 float-left text-left m_r10'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
             //Good.append("<div class='w_10 float-left text-center m_r10'><input type='text' class='w-100 h_0 text-center' name='GoodsQty' min='1' max='99' value='24'></div>");
-            Goods.append("<div class='w_10 float-left text-center m_r10'><span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>'"  + GoodsQty + "'</span></div>");
-            Goods.append("<div class='w_60 float-left text-left'><span>'" + GoodsName + "'</span></div>");
-            Goods.append("<div class='w_20 float-left text-right'><span>'" + GoodsPrice + "'</span></div>");
+            Goods.append("<div class='w_10 float-left text-center m_r10'><span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + GoodsQty + "</span></div>");
+            Goods.append("<div class='w_60 float-left text-left'><span>" + GoodsName + "</span></div>");
+            Goods.append("<div class='w_20 float-left text-right'><span>" + GoodsPrice + "</span></div>");
             _t_body.append(Goods);
 
             var sumPrice = GoodsQty * GoodsPrice;

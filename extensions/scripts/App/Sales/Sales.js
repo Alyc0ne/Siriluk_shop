@@ -17,8 +17,8 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
         async: false,
         success: function(e) {
             if(e != null){
-                var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsQty,e.GoodsName,e.GoodsPrice);
-                transacSalesGoods.gridControl.calSummary(true,GoodsPrice);
+                var GoodsPrice = transacSalesGoods.gridControl.addData(parseFloat(e.GoodsQty),e.GoodsName,e.GoodsPrice);
+                transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
             }
         },
         error: function(e) {
