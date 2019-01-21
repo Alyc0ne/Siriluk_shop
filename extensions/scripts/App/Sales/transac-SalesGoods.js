@@ -6,6 +6,7 @@ $(document).ready(function () {
 
 var GrandTotal = 0;
 var sub_total = 0;
+var arr_Data = new Array();
 function setTransac() {
     var _t = this;
     _t.Name = "Sales-Page";
@@ -73,16 +74,24 @@ function setTransac() {
                 return obj;
             }
         },
-        addData: function (GoodsQty,GoodsName,GoodsPrice) {
+        addData: function (GoodsID,GoodsQty,GoodsName,GoodsPrice) {
             var _t_body = _t.Element.find('#transac-body');
-            var Goods = $('<div class="w-100 h_5 p-3 bg_white m_b5" id="GoodDetail" data-uid="' + RandomMath() + '"></div>');
+            var uid = RandomMath();
+            var Goods = $('<div class="w-100 h_5 p-3 bg_white m_b5" id="GoodDetail" data-uid="' + uid + '"></div>');
             Goods.append("<div class='w_5 float-left text-left m_r10'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
             //Good.append("<div class='w_10 float-left text-center m_r10'><input type='text' class='w-100 h_0 text-center' name='GoodsQty' min='1' max='99' value='24'></div>");
             Goods.append("<div class='w_10 float-left text-center m_r10'><span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + GoodsQty + "</span></div>");
             Goods.append("<div class='w_60 float-left text-left'><span>" + GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span>" + GoodsPrice + "</span></div>");
             _t_body.append(Goods);
-
+            arr_Data.push({
+                uid : uid,
+                GoodsID : GoodsID,
+                GoodsName : GoodsName,
+                GoodsQty : GoodsQty,
+                GoodsPrice : GoodsPrice,
+                TotalAmnt : (GoodsPrice * GoodsQty)
+            });
             var sumPrice = GoodsQty * GoodsPrice;
             return sumPrice;
         },
@@ -114,6 +123,11 @@ function setTransac() {
             
         },
         removeGoods: function (uid){
+            var index = arr_Data.map(x => {
+                return x.uid;
+            }).indexOf(uid);
+            arr_Data.splice(index,1);
+
             var GoodDetail = _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']");
             var dataOneRow = _t.gridControl.getData_uid(uid);
             var GoodsPrice = parseFloat(dataOneRow.GoodsQty) * parseFloat(dataOneRow.GoodsPrice.replace(/,/g, ''));
@@ -123,6 +137,22 @@ function setTransac() {
         countGoodsTransac: function () {
             var tGrid = _t.Element.find("#transac-body #GoodDetail");
             return tGrid.length;
+        },
+        selectDataGrid: function (){
+            return arr_Data;
+        },
+        updateGoodsByIndex: function (uid,GoodsQty) {
+            var Goods = _t.gridControl.selectDataGrid();
+            if (Goods.length != 0) {
+                var index = Goods.findIndex((x => x.uid == uid));
+                if (index != null) {
+                    var Old_qty = Goods[index].GoodsQty;
+                    Goods[index].GoodsQty = Old_qty + GoodsQty;
+                    var GoodsPrice = Goods[index].GoodsPrice * GoodsQty;
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']")
+                    _t.gridControl.calSummary(true,GoodsPrice);
+                }
+            }
         }
     };
 };
