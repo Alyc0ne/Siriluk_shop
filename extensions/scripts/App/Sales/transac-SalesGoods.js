@@ -52,7 +52,7 @@ function setTransac() {
             gridEnd.append(total);
 
             var pay = $('<div class="w-100"></div>');
-            pay.append("<button class='btn btn-success w-100 p-3'>จ่ายชำระ</button>");
+            pay.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>");
             gridEnd.append(pay);
             gridStart.append(gridEnd);
 
@@ -82,7 +82,7 @@ function setTransac() {
             //Good.append("<div class='w_10 float-left text-center m_r10'><input type='text' class='w-100 h_0 text-center' name='GoodsQty' min='1' max='99' value='24'></div>");
             Goods.append("<div class='w_10 float-left text-center m_r10'><span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + GoodsQty + "</span></div>");
             Goods.append("<div class='w_60 float-left text-left'><span>" + GoodsName + "</span></div>");
-            Goods.append("<div class='w_20 float-left text-right'><span>" + GoodsPrice + "</span></div>");
+            Goods.append("<div class='w_20 float-left text-right'><span id='GoodsPrice'>" + GoodsPrice + "</span></div>");
             _t_body.append(Goods);
             arr_Data.push({
                 uid : uid,
@@ -141,16 +141,19 @@ function setTransac() {
         selectDataGrid: function (){
             return arr_Data;
         },
-        updateGoodsByIndex: function (uid,GoodsQty) {
+        updateGoodsByIndex: function (uid,GoodsQty,GoodsPrice) {
             var Goods = _t.gridControl.selectDataGrid();
             if (Goods.length != 0) {
                 var index = Goods.findIndex((x => x.uid == uid));
                 if (index != null) {
                     var Old_qty = Goods[index].GoodsQty;
                     Goods[index].GoodsQty = Old_qty + GoodsQty;
-                    var GoodsPrice = Goods[index].GoodsPrice * GoodsQty;
-                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']")
-                    _t.gridControl.calSummary(true,GoodsPrice);
+                    var ThisGoodsPrice = GoodsPrice * GoodsQty; //Goods Price This Goods!!
+                    Goods[index].GoodsPrice = ThisGoodsPrice + Goods[index].GoodsPrice; //Last GoodsPrice Atfer Update
+
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(1).html("<span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + Goods[index].GoodsQty + "</span>");
+                    //_t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(3).html("<span>" + Goods[index].GoodsPrice + "</span>");
+                    _t.gridControl.calSummary(true,ThisGoodsPrice);
                 }
             }
         }

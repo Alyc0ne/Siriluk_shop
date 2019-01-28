@@ -19,6 +19,7 @@
     <?php
         $this->load->view("Shared/Modal/Goods");
         $this->load->view("Shared/Modal/Unit");
+        $this->load->view("Shared/Modal/Confrim");
     ?>
     <div class="wrap">
         <div class="bg-backdrop"></div>

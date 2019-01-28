@@ -20,7 +20,7 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
             var index = null;
             if(e != null){
                 var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
-                if(GridGoods.length > 1){
+                if(GridGoods.length >= 1){
                     var GoodsID = e.GoodsID;
                     // index = GridGoods.map(x => {
                     //     return GridGoods.uid;
@@ -33,7 +33,7 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
                     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
                     
                 }else{
-                    transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,parseFloat(e.GoodsQty));
+                    transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,parseFloat(e.GoodsQty),e.GoodsPrice);
                 }   
             }
         },
@@ -41,7 +41,7 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
             //openloading(false);
         }
     });
-    //$("#GoodsBarcodeSearch").val("");
+    $("#GoodsBarcodeSearch").val("");
 });
 
 $(document).on("click",".imageDel", function(e){
@@ -85,3 +85,13 @@ function RandomMath() {
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
 }
+
+$(document).on("click","#SaveInvoice", function () {
+    var chkGoods = transacSalesGoods.gridControl.selectDataGrid().length;
+    if (chkGoods > 0) {
+        $("#ConfrimModal").modal();
+    }else{
+        bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาเพิ่มสินค้า</center>");
+    }
+    
+})
