@@ -265,15 +265,15 @@ function clearModal(name) {
 
 //Goods
 function ShowModalGoods() {
-    openloading(true);
+    //openloading(true);
     if(checkDataTable('Unit')){
         $("#GoodsNo").val(GenRunningNumber("Goods"));
         GetDataJson('Unit','#GoodsUnit');
         $("#GoodsModal").modal();
-        setTimeout(function(){
-            $("#GoodsBarcode").focus();
-            openloading(false);
-        },700);
+        // setTimeout(function(){
+        //     $("#GoodsBarcode").focus();
+        //     openloading(false);
+        // },700);
     }
 }
 
