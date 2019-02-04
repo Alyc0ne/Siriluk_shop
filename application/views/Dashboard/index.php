@@ -15,12 +15,20 @@
     <link href="<?php echo base_url(); ?>ex/css/float-chart.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?php echo base_url(); ?>ex/css/style.min.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-<![endif]-->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>extensions/content/App/site.css">
+
+    <script src="<?php echo base_url(); ?>ex/js/jquery_3.3.1.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="<?php echo base_url(); ?>ex/js/popper.min.js"></script>
+    <script src="<?php echo base_url(); ?>ex/js/bootstrap_4.1.0.min.js"></script>
+    <script src="<?php echo base_url(); ?>ex/js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="<?php echo base_url(); ?>ex/js/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="<?php echo base_url(); ?>ex/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="<?php echo base_url(); ?>ex/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="<?php echo base_url(); ?>ex/js/custom.min.js"></script>
 </head>
 
 <body>
@@ -56,14 +64,14 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="charts.html" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Charts</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Widgets</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Sell (ขายสินค้า)</span></a></li>
+                        <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Widgets</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="tables.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Tables</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Forms </span></a>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li> -->
+                        <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Goods (สินค้า) </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Form Basic </span></a></li>
-                                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> Form Wizard </span></a></li>
+                                <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Goods (เพิ่มสินค้า) </span></a></li>
+                                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Goods (รายการสินค้า) </span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -106,30 +114,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-md-flex align-items-center">
-                                    <div>
-                                        <h4 class="card-title">Site Analysis</h4>
-                                        <h5 class="card-subtitle">Overview of Latest Month</h5>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">One third width</h5>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <div class="bg-dark p-10 text-white text-center">
-                                                   <i class="fa fa-user m-b-5 font-16"></i>
-                                                   <h5 class="m-b-0 m-t-5">2540</h5>
-                                                   <small class="font-light">Total Users</small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- column -->
                                 </div>
                             </div>
+
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -144,18 +140,7 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    <script src="<?php echo base_url(); ?>ex/js/jquery_3.3.1.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<?php echo base_url(); ?>ex/js/popper.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/bootstrap_4.1.0.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/perfect-scrollbar.jquery.min.js"></script>
-    <script src="<?php echo base_url(); ?>ex/js/sparkline.js"></script>
-    <!--Wave Effects -->
-    <script src="<?php echo base_url(); ?>ex/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="<?php echo base_url(); ?>ex/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<?php echo base_url(); ?>ex/js/custom.min.js"></script>
+
     <!--This page JavaScript -->
     <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
     <!-- Charts js Files -->

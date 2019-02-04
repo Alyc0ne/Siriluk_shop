@@ -1,8 +1,12 @@
 <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/App/Sales/Sales.js"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/App/Sales/transac-SalesGoods.js"></script>
 
-<?php
-    echo "<div class='row h_100' id='Sales-Page'>";
-        
-    echo "</div>";
-?>
+<div class="col-md-4">
+    <div class="card" id="Right_SellGoods" style="height:600px!important;">
+        <div class="card-body" style="height:100%!important;">
+            <div class="col-12" id="Sell-Page" style="height:100%!important;">  
+                <!-- GEN BY TRANSACGRID -->
+            </div>
+        </div>
+    </div>
+</div>

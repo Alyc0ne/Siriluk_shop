@@ -9,7 +9,7 @@ var sub_total = 0;
 var arr_Data = new Array();
 function setTransac() {
     var _t = this;
-    _t.Name = "Sales-Page";
+    _t.Name = "Sell-Page";
     _t.Element = null;
     _t.init = function(){
         _t.htmlControl.getElement();
@@ -23,12 +23,30 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-            var LeftBox = $('<div class="col-8" style="text-align:center;"></div>');
-            LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:30px;margin-top:2%;'>");
-            LeftBox.append("<datalist id='Goods'></datalist>");
+            // var LeftBox = $('<div class="col-8" style="text-align:center;"></div>');
+            // LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:30px;margin-top:2%;'>");
+            // LeftBox.append("<datalist id='Goods'></datalist>");
+                var RightBox = $('<div class="row" style="height:100%!important;"></div>');
 
-            var Rightbox = $('<div class="col-4"></div>'); //style="min-height: 768px !important;"
-            var gridStart = $('<div class="row h_100" style="border-left:solid 1px #bfbfbf;"></div>"');
+                var gridStart = $('<div id="gridStart"></div>');
+                gridStart.append("<div class='col-12 p_a5' style='height:5%;border:solid 1px red;'></div>");
+                gridStart.append("<div class='col-12 p_a5' style='overflow:auto;height:70%;border:solid 1px blue;' id='transac-body'></div>");
+
+                var gridEnd = $('<div id="gridEnd"></div>');
+                gridEnd.append("<table style='width:100%;margin:7px;'>");
+                gridEnd.append("<tr><td style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' readonly></td></tr>");
+                gridEnd.append("<tr><td style='width:30%;'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>");  
+                gridEnd.append("<tr><td style='width:30%;'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' readonly></td></tr>");  
+                gridEnd.append("</table>");
+                gridEnd.append("<div class='w-100'></div>");
+                gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>");
+
+                
+                
+
+
+            {/* var Rightbox = $('<div class="row" style="height:100%!important; style="border-left:solid 1px #bfbfbf;"></div>"');
+            var gridStart = $('<div></div>');
             gridStart.append("<div class='col-12 align-self-start p_a5' style=';height:5%;border:solid 1px red;'></div>");
             gridStart.append("<div class='col-12 align-self-start p_a5' style='overflow:auto;height:70%;' id='transac-body'></div>");
 
@@ -52,13 +70,13 @@ function setTransac() {
             gridEnd.append(total);
 
             var pay = $('<div class="w-100"></div>');
-            pay.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>");
-            gridEnd.append(pay);
+            pay.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>"); */}
+            //gridEnd.append(pay);
             gridStart.append(gridEnd);
 
             Rightbox.append(gridStart);
 
-            _t.Element.append(LeftBox);
+            //_t.Element.append(LeftBox);
             _t.Element.append(Rightbox);
         }
     };
