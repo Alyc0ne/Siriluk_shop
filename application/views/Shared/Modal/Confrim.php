@@ -30,7 +30,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary btn-Confrim" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary btn-primary_Confrim">Save</button>
+        <button type="button" class="btn btn-primary btn-primary_Confrim"><i class="fas fa-check"></i>Save</button>
       </div>
     </div>
   </div>

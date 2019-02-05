@@ -10,6 +10,7 @@ $("#discountCash").change(function(e) {
 });
 
 $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
+    var QtyBarcode = $("#QtyBarcode").val();
     $.ajax({
         type: 'POST',
         url: base_url + "Goods/GoodsController/getGoods",
@@ -29,11 +30,11 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
                 }
 
                 if(index == null){
-                    var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,parseFloat(e.GoodsQty),e.GoodsName,e.GoodsPrice);
+                    var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
                     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
                     
                 }else{
-                    transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,parseFloat(e.GoodsQty),e.GoodsPrice);
+                    transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
                 }   
             }
         },

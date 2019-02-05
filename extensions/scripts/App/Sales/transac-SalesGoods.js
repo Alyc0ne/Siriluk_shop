@@ -9,7 +9,7 @@ var sub_total = 0;
 var arr_Data = new Array();
 function setTransac() {
     var _t = this;
-    _t.Name = "Sell-Page";
+    _t.Name = "Sell-PageRight";
     _t.Element = null;
     _t.init = function(){
         _t.htmlControl.getElement();
@@ -23,61 +23,31 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-            // var LeftBox = $('<div class="col-8" style="text-align:center;"></div>');
-            // LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:30px;margin-top:2%;'>");
-            // LeftBox.append("<datalist id='Goods'></datalist>");
-                var RightBox = $('<div class="row" style="height:100%!important;"></div>');
+            var LeftBox = $('<div class="row" style="height:100%!important;"></div>');
+            LeftBox.append("<input type='text' style='border:none;height:5%;' class='w_15' value='Qty (จำนวนสินค้า) : '> ");
+            LeftBox.append("<input type='number' style='height:5%;' class='w_5 text-center m_l10' id='QtyBarcode' name='QtyBarcode' min='1' max='99' value='1'>");
+            LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:5%;margin: 0 auto;'>");
+            LeftBox.append("<datalist id='Goods'></datalist>");
 
-                var gridStart = $('<div id="gridStart"></div>');
-                gridStart.append("<div class='col-12 p_a5' style='height:5%;border:solid 1px red;'></div>");
-                gridStart.append("<div class='col-12 p_a5' style='overflow:auto;height:70%;border:solid 1px blue;' id='transac-body'></div>");
+            var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
+            var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
+            gridStart.append("<div class='col-12 p_a5' style='height:5%;border:solid 1px red;'></div>");
+            gridStart.append("<div class='col-12 p_a5' style='overflow:auto;height:70%;border:solid 1px blue;' id='transac-body'></div>");
 
-                var gridEnd = $('<div id="gridEnd"></div>');
-                gridEnd.append("<table style='width:100%;margin:7px;'>");
-                gridEnd.append("<tr><td style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' readonly></td></tr>");
-                gridEnd.append("<tr><td style='width:30%;'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>");  
-                gridEnd.append("<tr><td style='width:30%;'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' readonly></td></tr>");  
-                gridEnd.append("</table>");
-                gridEnd.append("<div class='w-100'></div>");
-                gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>");
-
-                
-                
-
-
-            {/* var Rightbox = $('<div class="row" style="height:100%!important; style="border-left:solid 1px #bfbfbf;"></div>"');
-            var gridStart = $('<div></div>');
-            gridStart.append("<div class='col-12 align-self-start p_a5' style=';height:5%;border:solid 1px red;'></div>");
-            gridStart.append("<div class='col-12 align-self-start p_a5' style='overflow:auto;height:70%;' id='transac-body'></div>");
-
-            var gridEnd = $('<div class="col-12 align-self-end" style="border-top:solid 1px #bfbfbf;padding:2px!important;"></div>');
-            var sub_total = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
-            sub_total.append("<div class='w-75 float-left'>รวมเงิน : </div>");
-            sub_total.append("<input type='text' class='w-25 float-right text-right' style='border:none;font-weight:bold;' id='sub_total' name='sub_total' value='' readonly></input>");
-            sub_total.append("<div class='clear_b sub_line'></div>");
-            gridEnd.append(sub_total);
-
-            var discount = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
-            discount.append("<div class='w-75 float-left'>ส่วนลด : </div>");
-            discount.append("<input type='text' class='w-25 float-right text-right _number' style='font-weight:bold;' id='discount' name='discount' value=''></input>");
-            discount.append("<div class='clear_b sub_line'></div>");
-            gridEnd.append(discount);
-
-            var total = $('<div class="bg_white w-100 p-3 h_p20 p_all10"></div>');
-            total.append("<div class='w-75 float-left'>จำนวนเงินทั้งสิ้น : </div>");
-            total.append("<input type='text' class='w-25 float-right text-right' style='border:none;font-weight:bold;' id='totalPrice' name='totalPrice' value='' readonly></input>");
-            total.append("<div class='clear_b'></div>");
-            gridEnd.append(total);
-
-            var pay = $('<div class="w-100"></div>');
-            pay.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>"); */}
-            //gridEnd.append(pay);
+            var gridEnd = $('<div id="gridEnd" style="width:100%;"></div>');
+            var table = "<table style='width:100%;margin:7px;'>";
+            table += "<tr style='width:100%;'><td style='width:30%;'>รวมเงิน</td><td style='width:5%;'> : </td><td style='width:65%;'><input type='text' class='w-100 float-right text-right' id='sub_total' name='sub_total' value='' readonly></td></tr>";
+            table += "<tr style='width:100%;'><td style='width:30%;'>ส่วนลด</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right _number' id='discount' name='discount' value=''></td></tr>";  
+            table += "<tr style='width:100%;'><td style='width:30%;'>จำนวนเงินทั้งสิ้น</td><td style='width:5%;'> : </td><td><input type='text' class='w-100 float-right text-right' id='totalPrice' name='totalPrice' value='' readonly></td></tr>";  
+            table += "</table>";
+            gridEnd.append(table);
+            gridEnd.append("<div class='w-100'></div>");
+            gridEnd.append("<button class='btn btn-success w-100 p-3' id='SaveInvoice'>จ่ายชำระ</button>");
+            
             gridStart.append(gridEnd);
-
             Rightbox.append(gridStart);
-
-            //_t.Element.append(LeftBox);
             _t.Element.append(Rightbox);
+            $("#Sell-PageLeft").append(LeftBox);
         }
     };
     _t.gridControl = {
@@ -92,25 +62,27 @@ function setTransac() {
                 return obj;
             }
         },
-        addData: function (GoodsID,GoodsQty,GoodsName,GoodsPrice) {
+        addData: function (GoodsID,GoodsName,GoodsPrice,QtyBarcode) {
             var _t_body = _t.Element.find('#transac-body');
             var uid = RandomMath();
-            var Goods = $('<div class="w-100 h_5 p-3 bg_white m_b5" id="GoodDetail" data-uid="' + uid + '"></div>');
-            Goods.append("<div class='w_5 float-left text-left m_r10'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
-            //Good.append("<div class='w_10 float-left text-center m_r10'><input type='text' class='w-100 h_0 text-center' name='GoodsQty' min='1' max='99' value='24'></div>");
-            Goods.append("<div class='w_10 float-left text-center m_r10'><span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + GoodsQty + "</span></div>");
-            Goods.append("<div class='w_60 float-left text-left'><span>" + GoodsName + "</span></div>");
-            Goods.append("<div class='w_20 float-left text-right'><span id='GoodsPrice'>" + GoodsPrice + "</span></div>");
+            var TotalAmnt = GoodsPrice * QtyBarcode;
+            var PricePerGoods = QtyBarcode > 1 ? "@" + String(numberWithCommas(parseFloat(GoodsPrice).toFixed(2))) : "";
+            var Goods = $('<div class="w_100 h_5 bg_white m_b5" id="GoodDetail" data-uid="' + uid + '"></div>');
+            Goods.append("<div class='w_5 float-left text-left'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
+            Goods.append("<div class='w_10 float-left text-center m_r5'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
+            Goods.append("<div class='w_40 float-left text-left'><span>" + GoodsName + "</span></div>");
+            Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");
+            Goods.append("<div class='w_20 float-left text-right'><span id='TotalAmnt'>" + numberWithCommas(parseFloat(TotalAmnt).toFixed(2)) + "</span></div>");
             _t_body.append(Goods);
             arr_Data.push({
                 uid : uid,
                 GoodsID : GoodsID,
                 GoodsName : GoodsName,
-                GoodsQty : GoodsQty,
+                GoodsQty : QtyBarcode,
                 GoodsPrice : GoodsPrice,
-                TotalAmnt : (GoodsPrice * GoodsQty)
+                TotalAmnt : TotalAmnt
             });
-            var sumPrice = GoodsQty * GoodsPrice;
+            var sumPrice = QtyBarcode * GoodsPrice;
             return sumPrice;
         },
         calSummary: function (plus,GoodsPrice,Discount) {
@@ -159,18 +131,18 @@ function setTransac() {
         selectDataGrid: function (){
             return arr_Data;
         },
-        updateGoodsByIndex: function (uid,GoodsQty,GoodsPrice) {
+        updateGoodsByIndex: function (uid,GoodsPrice,GoodsBarcode) {
             var Goods = _t.gridControl.selectDataGrid();
             if (Goods.length != 0) {
                 var index = Goods.findIndex((x => x.uid == uid));
                 if (index != null) {
                     var Old_qty = Goods[index].GoodsQty;
-                    Goods[index].GoodsQty = Old_qty + GoodsQty;
-                    var ThisGoodsPrice = GoodsPrice * GoodsQty; //Goods Price This Goods!!
-                    Goods[index].GoodsPrice = ThisGoodsPrice + Goods[index].GoodsPrice; //Last GoodsPrice Atfer Update
+                    Goods[index].GoodsQty = parseFloat(Old_qty) + parseFloat(GoodsBarcode);
+                    var ThisGoodsPrice = GoodsPrice * GoodsBarcode; //Goods Price This Goods!!
+                    Goods[index].GoodsPrice = parseFloat(ThisGoodsPrice) + parseFloat(Goods[index].GoodsPrice); //Last GoodsPrice Atfer Update
 
-                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(1).html("<span class='w-100 h_0 text-center' name='GoodsQty' style='border:solid 1px black;padding:3px;'>"  + Goods[index].GoodsQty + "</span>");
-                    //_t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(3).html("<span>" + Goods[index].GoodsPrice + "</span>");
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(1).html("<span class='w_100 h_0 text-center' name='GoodsQty'>"  + Goods[index].GoodsQty + "</span>");
+                    _t.Element.find("#transac-body #GoodDetail[data-uid='" + uid +  "']").children().eq(3).html("<span id='GoodsPrice'>" + numberWithCommas(Goods[index].GoodsPrice.toFixed(2)) + "</span>");
                     _t.gridControl.calSummary(true,ThisGoodsPrice);
                 }
             }

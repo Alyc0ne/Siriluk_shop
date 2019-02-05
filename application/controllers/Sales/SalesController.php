@@ -23,7 +23,6 @@ class SalesController extends CI_Controller{
 
         echo json_encode($result);
     }
-
 }
 
 

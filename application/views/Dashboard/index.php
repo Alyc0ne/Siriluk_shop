@@ -29,6 +29,9 @@
     <script src="<?php echo base_url(); ?>ex/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="<?php echo base_url(); ?>ex/js/custom.min.js"></script>
+    <script>var base_url = '<?php echo base_url() ?>';</script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 </head>
 
 <body>
@@ -41,6 +44,11 @@
             <div class="lds-pos"></div>
         </div>
     </div>
+    <?php
+        $this->load->view("Shared/Modal/Goods");
+        $this->load->view("Shared/Modal/Unit");
+        $this->load->view("Shared/Modal/Confrim");
+    ?>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
@@ -70,7 +78,7 @@
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li> -->
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Goods (สินค้า) </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
-                                <li class="sidebar-item"><a href="form-basic.html" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Goods (เพิ่มสินค้า) </span></a></li>
+                                <li class="sidebar-item"><a href="javascript:ShowModalGoods();" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Goods (เพิ่มสินค้า) </span></a></li>
                                 <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Goods (รายการสินค้า) </span></a></li>
                             </ul>
                         </li>
@@ -115,15 +123,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h5 class="card-title">One third width</h5>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.</p>
-                                    </div>
-                                </div>
-                            </div>
-
+                            <?php $this->load->view("Goods/index"); ?>
                         </div>
 
                     </div>

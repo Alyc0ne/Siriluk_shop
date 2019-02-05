@@ -40,7 +40,8 @@ class BaseSystem extends CI_Model
 
     public function GetGoodsByBarcode($GoodsBarcode)
     {
-        $result = $this->db->where('GoodsBarcode',$GoodsBarcode)->get('smGoods')->row_array();
+        $Where = array('GoodsBarcode' => $GoodsBarcode, 'IsDelete' => 0);
+        $result = $this->db->where($Where)->get('smGoods')->row_array();
         return $result;
     }
 }

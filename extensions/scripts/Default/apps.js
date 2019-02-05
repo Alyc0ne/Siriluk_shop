@@ -263,20 +263,6 @@ function clearModal(name) {
     })
 }
 
-//Goods
-function ShowModalGoods() {
-    //openloading(true);
-    if(checkDataTable('Unit')){
-        $("#GoodsNo").val(GenRunningNumber("Goods"));
-        GetDataJson('Unit','#GoodsUnit');
-        $("#GoodsModal").modal();
-        // setTimeout(function(){
-        //     $("#GoodsBarcode").focus();
-        //     openloading(false);
-        // },700);
-    }
-}
-
 function openloading(type) {
     if (type) {
         $(".wrap").show();

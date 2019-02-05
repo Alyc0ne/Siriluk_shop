@@ -1,6 +1,6 @@
 //Unit
 function ShowModalUnit() {
-    openloading(true);
+    //openloading(true);
     $.ajax({
         type: 'POST',
         url: base_url + "Base/BaseController/GenRunningNumber",
@@ -8,7 +8,7 @@ function ShowModalUnit() {
         datatype: "json",
         traditional: true,
         success: function (e) {
-            openloading(false);
+            //openloading(false);
             $("#UnitNo").val(e);
             $("#UnitModal").modal();
             setTimeout(function(){
@@ -27,7 +27,7 @@ $(document).on("click", "#btn-SaveUnit", function () {
         openloading(true);
         $.ajax({
             type: 'POST',
-            url: base_url + "Unit/Unit/BindSave",
+            url: base_url + "Unit/UnitController/BindSave",
             data: {
                 "unit_no" : $("#UnitNo").val(),
                 "unit_name" : $("#UnitName").val(),
@@ -37,7 +37,7 @@ $(document).on("click", "#btn-SaveUnit", function () {
             traditional: true,
             success: function (e) {
                 openloading(false);
-                PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
+                //PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
                 $("#UnitModal").modal('toggle');
                 clearModal("#UnitModal");
             },

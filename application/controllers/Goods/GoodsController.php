@@ -7,7 +7,7 @@ class GoodsController extends CI_Controller{
 
     public function index()
     {
-        $data['path_link'] = "Goods/list";
+        $data['path_link'] = "Goods/index";
         $data['result'] = $this->db->get('smGoods')->result_array();
         $this->load->view("Dashboard/mp_default",$data);
     }

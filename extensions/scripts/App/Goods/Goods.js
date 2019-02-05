@@ -7,7 +7,7 @@ $(document).ready(function() {
 });
 
 $(document).on("click", "#btn-Save-Goods", function () {
-    //if (bindValidate("#frmGoods")){
+    if (bindValidate("#frmGoods")){
         openloading(true);
         $.ajax({
             type: 'POST',
@@ -25,7 +25,7 @@ $(document).on("click", "#btn-Save-Goods", function () {
             traditional: true,
             success: function (e) {
                 openloading(false);
-                PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
+                //PostMsgSuccess(" บันทึกข้อมูลสำเร็จ");
                 $("#ModalNewGoods").modal('toggle');
                 clearModal("#ModalNewGoods");
             },
@@ -33,5 +33,19 @@ $(document).on("click", "#btn-Save-Goods", function () {
                 //openloading(false);
             }
         });
-    //}
+    }
 });
+
+//Goods
+function ShowModalGoods() {
+    //openloading(true);
+    if(checkDataTable('Unit')){
+        $("#GoodsNo").val(GenRunningNumber("Goods"));
+        GetDataJson('Unit','#GoodsUnit');
+        $("#GoodsModal").modal();
+        // setTimeout(function(){
+        //     $("#GoodsBarcode").focus();
+        //     openloading(false);
+        // },700);
+    }
+}
