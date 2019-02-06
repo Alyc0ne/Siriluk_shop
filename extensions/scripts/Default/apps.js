@@ -263,13 +263,27 @@ function clearModal(name) {
     })
 }
 
-function openloading(type) {
-    if (type) {
-        $(".wrap").show();
-    }else{
-        setTimeout(function(){ 
-            $(".wrap").hide(); 
-            result = true;
-        }, 500);
+function PathLink(system) {
+    var url = "";
+    switch (system) {
+        case "Goods":
+            url = "Goods/index";
+            break;
     }
+    $.ajax({
+        type: 'POST',
+        url: base_url + url,
+        data: {
+            "System": system
+        },
+        datatype: "json",
+        traditional: true,
+        async: false,
+        success: function(e) {
+            console.log("KIKI");
+        },
+        error: function(e) {
+
+        }
+    })
 }

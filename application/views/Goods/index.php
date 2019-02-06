@@ -48,24 +48,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
+      <?php 
+        foreach ($result as $Goods) {
+          $num = 1;
+          echo "<tr>";
+              echo "<th scope='row'>",$num,"</th>";
+              echo "<td>",$Goods['GoodsBarcode'],"</td>";
+              echo "<td>",$Goods['GoodsName'],"</td>";
+              echo "<td>",$Goods['GoodsQty'],"</td>";
+              echo "<td>",$Goods['GoodsPrice'],"</td>";
+          echo "</tr>";
+          $num++;
+        }
+
+      ?>
     </tbody>
   </table>
   <nav aria-label="Page navigation example">
