@@ -267,7 +267,7 @@ function PathLink(system) {
     var url = "";
     switch (system) {
         case "Goods":
-            url = "Goods/index";
+            url = "Goods/GoodsController/index";
             break;
     }
     $.ajax({

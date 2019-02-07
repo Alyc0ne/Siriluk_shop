@@ -31,7 +31,7 @@
     <script src="<?php echo base_url(); ?>ex/js/custom.min.js"></script>
     <script>var base_url = '<?php echo base_url() ?>';</script>
     <script type="text/javascript" src="<?php echo base_url(); ?>extensions/scripts/Default/apps.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>  
 </head>
 
 <body>
@@ -71,21 +71,21 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="#" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Sell (ขายสินค้า)</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(); ?>DashboardController" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="<?php echo base_url(); ?>Sales/SalesController" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span class="hide-menu">Sell (ขายสินค้า)</span></a></li>
                         <!-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="widgets.html" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Widgets</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="tables.html" aria-expanded="false"><i class="mdi mdi-border-inside"></i><span class="hide-menu">Tables</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="grid.html" aria-expanded="false"><i class="mdi mdi-blur-linear"></i><span class="hide-menu">Full Width</span></a></li> -->
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Goods (สินค้า) </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="javascript:ShowModalGoods();" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Goods (เพิ่มสินค้า) </span></a></li>
-                                <li class="sidebar-item"><a href="javascript:PathLink(Goods);" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Goods (รายการสินค้า) </span></a></li>
+                                <li class="sidebar-item"><a href="<?php echo base_url(); ?>Goods/GoodsController" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Goods (รายการสินค้า) </span></a></li>
                             </ul>
                         </li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span class="hide-menu">Unit (หน่วยนับ) </span></a>
                             <ul aria-expanded="false" class="collapse  first-level">
                                 <li class="sidebar-item"><a href="javascript:ShowModalUnit();" class="sidebar-link"><i class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Unit (เพิ่มหน่วยนับ) </span></a></li>
-                                <li class="sidebar-item"><a href="form-wizard.html" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Unit (รายการหน่วยนับ) </span></a></li>
+                                <li class="sidebar-item"><a href="<?php echo base_url(); ?>Unit/UnitController" class="sidebar-link"><i class="mdi mdi-note-plus"></i><span class="hide-menu"> List Unit (รายการหน่วยนับ) </span></a></li>
                             </ul>
                         </li>
                     </ul>
@@ -129,7 +129,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="row">
-                            <?php $this->load->view("Goods/index"); ?>
+                            <?php 
+                                $this->load->view($path_link); 
+                            ?>
                         </div>
 
                     </div>

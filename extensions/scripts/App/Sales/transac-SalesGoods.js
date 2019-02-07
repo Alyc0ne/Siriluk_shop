@@ -23,11 +23,11 @@ function setTransac() {
             return _t.Element;
         },
         genGrid: function () {
-            var LeftBox = $('<div class="row" style="height:100%!important;"></div>');
-            LeftBox.append("<input type='text' style='border:none;height:5%;' class='w_15' value='Qty (จำนวนสินค้า) : '> ");
-            LeftBox.append("<input type='number' style='height:5%;' class='w_5 text-center m_l10' id='QtyBarcode' name='QtyBarcode' min='1' max='99' value='1'>");
-            LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:5%;margin: 0 auto;'>");
-            LeftBox.append("<datalist id='Goods'></datalist>");
+            // var LeftBox = $('<div class="row" style="height:100%!important;"></div>');
+            // LeftBox.append("<input type='text' style='border:none;height:5%;' class='w_15' value='Qty (จำนวนสินค้า) : '> ");
+            // LeftBox.append("<input type='number' style='height:5%;' class='w_5 text-center m_l10' id='QtyBarcode' name='QtyBarcode' min='1' max='99' value='1'>");
+            // LeftBox.append("<input list='Goods' class='w-75 input-icon-barcode' id='GoodsBarcodeSearch' style='height:5%;margin: 0 auto;'>");
+            // LeftBox.append("<datalist id='Goods'></datalist>");
 
             var Rightbox = $('<div class="row" style="height:100%!important;"></div>');
             var gridStart = $('<div id="gridStart" style="width:100%;"></div>');
@@ -47,7 +47,7 @@ function setTransac() {
             gridStart.append(gridEnd);
             Rightbox.append(gridStart);
             _t.Element.append(Rightbox);
-            $("#Sell-PageLeft").append(LeftBox);
+            //$("#Sell-PageLeft").append(LeftBox);
         }
     };
     _t.gridControl = {

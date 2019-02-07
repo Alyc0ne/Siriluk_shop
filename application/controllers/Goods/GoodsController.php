@@ -9,7 +9,7 @@ class GoodsController extends CI_Controller{
     {
         $data['path_link'] = "Goods/index";
         $data['result'] = $this->db->get('smGoods')->result_array();
-        $this->load->view("Dashboard/mp_default",$data);
+        $this->load->view("Dashboard/index",$data);
     }
 
     public function BindSave(){
