@@ -48,6 +48,7 @@
         $this->load->view("Shared/Modal/Goods");
         $this->load->view("Shared/Modal/Unit");
         $this->load->view("Shared/Modal/Confrim");
+        $this->load->view("Shared/Modal/NoGoodsBarcode");
     ?>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
