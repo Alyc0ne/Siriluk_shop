@@ -24,7 +24,8 @@ CREATE TABLE [dbo].[smGoods](
 	[CreatedDate] DATETIME NOT NULL,
 	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
 	[ModifiedDate] DATETIME NOT NULL,
-	[IsDelete] BIT NOT NULL
+	[IsDelete] BIT NOT NULL,
+	[IsNoBarcode] BIT NOT NULL
 )
 END
 GO
