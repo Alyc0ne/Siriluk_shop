@@ -21,7 +21,11 @@
             <div class="form-group row">
                 <label for="GoodsBarcode" class="col-sm-2 col-form-label require">Barcode : </label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="GoodsBarcode" data-maxlength='10'>
+                    <div class="custom-control custom-checkbox mr-sm-2">
+                        <input type="checkbox" class="custom-control-input" id="IsBarcode">
+                        <label class="custom-control-label" for="IsBarcode">First One</label>
+                    </div>
+                    <input type="text" class="form-control" id="GoodsBarcode" data-maxlength='10' disabled>
                 </div>
             </div>
             <div class="form-group row">
@@ -30,12 +34,12 @@
                     <input type="text" class="form-control" id="GoodsName" data-maxlength='250'>
                 </div>
             </div>
-            <div class="form-group row">
+            <!-- <div class="form-group row">
                 <label for="GoodsQty" class="col-sm-2 col-form-label">จำนวนสินค้า : </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control _number" id="GoodsQty" data-maxlength='100'>
                 </div>
-            </div>
+            </div> -->
             <div class="form-group row">
                 <label for="GoodsPrice" class="col-sm-2 col-form-label require">ราคาสินค้า : </label>
                 <div class="col-sm-10">

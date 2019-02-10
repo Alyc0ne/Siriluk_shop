@@ -18,27 +18,17 @@
                                 <input type="checkbox" id="mainCheckbox" />
                                 <span class="checkmark"></span>
                             </label>
-                        </th>
-                        <th scope="col">ชื่อสินค้า</th>
+                        </th>ชื่อสินค้า
+                        <th scope="col"></th>
                         <th scope="col">ราคาสินค้า</th>
                     </tr>
                 </thead>
-                <tbody class="customtable">
-                  <?php
-                    foreach ($result as $item) {
-                      echo "<tr>";
-                        echo "<th>";
-                        echo "<label class='customcheckbox'>";
-                        echo "<input type='checkbox' class='listCheckbox' />";
-                        echo "<span class='checkmark'></span>";
-                        echo "</label>";
-                        echo "</th>";
-                        echo "<td>",$item['GoodsName'],"</td>";
-                        echo "<td>",$item['GoodsPrice'],"</td>";
-                      echo "</tr>";
-                    }
-                  ?>
+                <tbody class="NoGoodsBarcode_body">
+
                 </tbody>
+                <div class='page'>
+                  
+                </div>
             </table>
         </div>
       </div>

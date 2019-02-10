@@ -16,15 +16,15 @@ class GoodsController extends CI_Controller{
         try{
             $System = $this->BaseSystem->GenSystem('Unit');
             $unit = $this->BaseSystem->GetDataOneRow($System['$table'],$this->input->post("goods_unit_id"));
-            $GoodsQty = $this->input->post("goods_qty");
+            $IsBarcode = $this->input->post("IsBarcode");
             $data=array(
                 "GoodsID"=>substr(uniqid(), 3), //10 หลัก
-                "GoodsNo"=>$this->input->post("goods_no"),
-                "GoodsBarcode"=>$this->input->post("goods_barcode"),
-                "GoodsName"=>$this->input->post("goods_name"),
-                "GoodsQty"=>$GoodsQty*$unit['unit_qty'],
-                "GoodsPrice"=>$this->input->post("goods_price"),
-                "GoodsCost"=>$this->input->post("goods_cost"),
+                "GoodsNo"=>$this->input->post("GoodsNo"),
+                "GoodsBarcode"=>boolval($IsBarcode) != false ? $this->input->post("GoodsBarcode") : null,
+                "GoodsName"=>$this->input->post("GoodsName"),
+                "GoodsQty"=>1,
+                "GoodsPrice"=>$this->input->post("GoodsPrice"),
+                "GoodsCost"=>$this->input->post("GoodsCost"),
                 "GoodsUnitID"=>"Null", //$unit['UnitID'],
                 "GoodsUnitName"=>"Null", //$unit['UnitName'],
                 "GoodsLocationID"=>"Null",
@@ -33,7 +33,8 @@ class GoodsController extends CI_Controller{
                 "CreatedDate"=>date("Y-m-d H:i:s"),
                 "ModifiedBy"=>null,
                 "ModifiedDate"=>date("Y-m-d H:i:s"),
-                "IsDelete"=>false
+                "IsDelete"=>false,
+                "IsBarcode"=>boolval($IsBarcode)
             );
             $this->db->insert("smGoods",$data);
         }catch(Exception $e){
@@ -43,15 +44,16 @@ class GoodsController extends CI_Controller{
     
     public function getGoods()
     {
-        $Barcode = $this->input->post("GoodsBarcode");
+       $Barcode = $this->input->post("GoodsBarcode");
         $where = "";
-        if (is_numeric($Barcode)) {
-            $where = "Barcode = $Barcode";
-        }else {
-            $wher = "GoodsName = " + $Barcode;
-        }
-
         $result = $this->BaseSystem->GetGoodsByBarcode($Barcode);
+
+        echo json_encode($result);
+    }
+
+    public function getNoGoodsBarcode()
+    {
+        $result = $this->BaseSystem->GetGoodsNoBarcode();
 
         echo json_encode($result);
     }
