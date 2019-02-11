@@ -72,16 +72,16 @@ function ShowModalNoGoodsBarcode() {
             var uid = RandomMath();
             var html = "";
             for (let i = 0; i < e.length; i++) {
-                html += '<tr id="uid" data-uid="' + RandomMath() + '">';
+                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-GoodsID="' + e[i].GoodsID + '">';
                 //html += '<tr id ="uid" data-uid="' + uid + '">';
                 html += '<th>';
                 html += '<label class="customcheckbox">';
-                html += '<input type="checkbox" class="listCheckbox" />';
+                html += '<input type="checkbox" class="chkNoGoodsBarcode" />';
                 html += '<span class="checkmark"></span>';
                 html += '</label>';
                 html += '</th>';
-                html += '<td>"' + e[i].GoodsName + '"</td>';
-                html += '<td>"' + e[i].GoodsPrice + '"</td>';
+                html += '<td id="NoGoodsBarcode_GoodsName">"' + e[i].GoodsName + '"</td>';
+                html += '<td id="NoGoodsBarcode_GoodsPrice">"' + e[i].GoodsPrice + '"</td>';
                 html += '</tr>';
             }
             $(".NoGoodsBarcode_Body").append(html);
@@ -109,3 +109,13 @@ function ShowModalNoGoodsBarcode() {
         }
     });
 }
+
+$(document).on("click", ".chkNoGoodsBarcode", function (e) {
+    var GoodsArray = new Array();
+    if($(".chkNoGoodsBarcode:checkbox:checked").length > 0){
+        GoodsArray.push({
+
+        });
+    }
+    var uid = $(this).closest('tr').data("uid"); //uid for rowGoods
+});
