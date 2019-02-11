@@ -23,7 +23,7 @@
                         <th scope="col">ราคาสินค้า</th>
                     </tr>
                 </thead>
-                <tbody class="NoGoodsBarcode_body">
+                <tbody class="NoGoodsBarcode_Body">
 
                 </tbody>
                 <div class='page'>

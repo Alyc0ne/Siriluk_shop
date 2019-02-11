@@ -72,7 +72,8 @@ function ShowModalNoGoodsBarcode() {
             var uid = RandomMath();
             var html = "";
             for (let i = 0; i < e.length; i++) {
-                html += '<tr id ="uid" data-uid="' + uid + '">';
+                html += '<tr id="uid" data-uid="' + RandomMath() + '">';
+                //html += '<tr id ="uid" data-uid="' + uid + '">';
                 html += '<th>';
                 html += '<label class="customcheckbox">';
                 html += '<input type="checkbox" class="listCheckbox" />';
@@ -82,8 +83,8 @@ function ShowModalNoGoodsBarcode() {
                 html += '<td>"' + e[i].GoodsName + '"</td>';
                 html += '<td>"' + e[i].GoodsPrice + '"</td>';
                 html += '</tr>';
-                $(".NoGoodsBarcode_body").append(html);
             }
+            $(".NoGoodsBarcode_Body").append(html);
 
             var pagination = '<nav aria-label="...">';
             pagination += '<ul class="pagination">';
