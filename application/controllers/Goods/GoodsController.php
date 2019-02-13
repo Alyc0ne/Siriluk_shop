@@ -54,6 +54,10 @@ class GoodsController extends CI_Controller{
     public function getNoGoodsBarcode()
     {
         $result = $this->BaseSystem->GetGoodsNoBarcode();
+        // $arr = array(
+        //     "GoodsData"=>$result,
+        //     "EEE"=>"Test"
+        // );
 
         echo json_encode($result);
     }

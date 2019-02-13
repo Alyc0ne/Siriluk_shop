@@ -1,3 +1,7 @@
+var TempDataNoGoodsBarcode = null;
+let TempGoodsIDNoGoodsBarcode = new Array();
+let numClick = 0;
+
 $(document).ready(function() {
     $('.js-example-basic-single').select2();
 
@@ -60,6 +64,7 @@ $(document).on("click", "#IsBarcode", function () {
 });
 
 function ShowModalNoGoodsBarcode() {
+    $("#NoGoodsBarcodeModal").modal();
     $.ajax({
         type: 'POST',
         url: base_url + "Goods/GoodsController/getNoGoodsBarcode",
@@ -69,10 +74,10 @@ function ShowModalNoGoodsBarcode() {
         dataType: "json",
         traditional: true,
         success: function (e) {
-            var uid = RandomMath();
+            TempDataNoGoodsBarcode = e;
             var html = "";
             for (let i = 0; i < e.length; i++) {
-                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-GoodsID="' + e[i].GoodsID + '">';
+                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e[i].GoodsID + '">';
                 //html += '<tr id ="uid" data-uid="' + uid + '">';
                 html += '<th>';
                 html += '<label class="customcheckbox">';
@@ -111,11 +116,35 @@ function ShowModalNoGoodsBarcode() {
 }
 
 $(document).on("click", ".chkNoGoodsBarcode", function (e) {
-    var GoodsArray = new Array();
-    if($(".chkNoGoodsBarcode:checkbox:checked").length > 0){
-        GoodsArray.push({
-
-        });
+    var uid = $(this).closest('tr').data("goodsid"); //GoodsID for rowGoods
+    if($(".chkNoGoodsBarcode:checkbox:checked").length > numClick){
+        TempGoodsIDNoGoodsBarcode.push(uid);
+        numClick++;
+    }else{
+        var index = TempGoodsIDNoGoodsBarcode.map(x => {
+            return x.uid;
+        }).indexOf(uid);
+        TempGoodsIDNoGoodsBarcode.splice(index,1);
+        numClick--;
     }
-    var uid = $(this).closest('tr').data("uid"); //uid for rowGoods
+});
+
+$(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
+    var arrResult = new Array();
+    if (TempGoodsIDNoGoodsBarcode != null && TempGoodsIDNoGoodsBarcode.length > 0) {
+        for (let c = 0; c < TempGoodsIDNoGoodsBarcode.length; c++) {
+            // var result = $.grep(TempGoodsIDNoGoodsBarcode, function (e) {
+            //     return e.GoodsID == TempGoodsIDNoGoodsBarcode[c].GoodsID;
+            // });
+            var result = TempDataNoGoodsBarcode.find(x => x.GoodsID == TempGoodsIDNoGoodsBarcode[c]);
+            arrResult.push(result);
+        }
+        
+        if (arrResult != null && arrResult.length > 0) {
+        for (let a = 0; a < arrResult.length; a++) {
+            transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
+        }
+    }
+    }
+    
 });

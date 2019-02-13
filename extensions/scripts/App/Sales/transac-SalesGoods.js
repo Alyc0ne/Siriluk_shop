@@ -62,7 +62,7 @@ function setTransac() {
                 return obj;
             }
         },
-        addData: function (GoodsID,GoodsName,GoodsPrice,QtyBarcode) {
+        addData: function (GoodsID,GoodsName,GoodsPrice,QtyBarcode) { //QtyBarcode : Number Of Goods
             var _t_body = _t.Element.find('#transac-body');
             var uid = RandomMath();
             var TotalAmnt = GoodsPrice * QtyBarcode;
