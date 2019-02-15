@@ -26,7 +26,9 @@
                 <tbody class="NoGoodsBarcode_Body">
 
                 </tbody>
-                <div class='page'>
+                <tfoot class='page'>
+                </tfoot>
+                <div>
                   
                 </div>
             </table>

@@ -70,7 +70,7 @@ function setTransac() {
             var Goods = $('<div class="w_100 h_5 bg_white m_b5" id="GoodDetail" data-uid="' + uid + '"></div>');
             Goods.append("<div class='w_5 float-left text-left'><span class='imageDel' style='cursor:pointer;'><input type='hidden' value='1234'></span></div>");
             Goods.append("<div class='w_10 float-left text-center m_r5'><span class='w_100 h_0 text-center' name='GoodsQty'>"  + QtyBarcode + "</span></div>");
-            Goods.append("<div class='w_40 float-left text-left'><span>" + GoodsName + "</span></div>");
+            Goods.append("<div class='w_40 float-left text-left text-ellipsis' alt = '" + GoodsName + "'><span>" + GoodsName + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='PricePerGoods' style='display:inline-block;'>"  + PricePerGoods + "</span></div>");
             Goods.append("<div class='w_20 float-left text-right'><span id='TotalAmnt'>" + numberWithCommas(parseFloat(TotalAmnt).toFixed(2)) + "</span></div>");
             _t_body.append(Goods);

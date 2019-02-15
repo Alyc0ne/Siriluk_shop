@@ -63,6 +63,20 @@ $(document).on("click", "#IsBarcode", function () {
     }
 });
 
+function manageAdd_updateGoods(DataGoods,GridGoods,QtyBarcode) {
+    var index = null;
+    if(GridGoods.length >= 1){
+        index = GridGoods.find((x => x.GoodsID == DataGoods.GoodsID));
+    }
+
+    if(index == null){
+        var GoodsPrice = transacSalesGoods.gridControl.addData(DataGoods.GoodsID,DataGoods.GoodsName,DataGoods.GoodsPrice,QtyBarcode);
+        transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
+    }else{
+        transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,DataGoods.GoodsPrice,QtyBarcode);
+    } 
+}
+
 function ShowModalNoGoodsBarcode() {
     $("#NoGoodsBarcodeModal").modal();
     $.ajax({
@@ -74,10 +88,10 @@ function ShowModalNoGoodsBarcode() {
         dataType: "json",
         traditional: true,
         success: function (e) {
-            TempDataNoGoodsBarcode = e;
+            TempDataNoGoodsBarcode = e.GoodsData;
             var html = "";
-            for (let i = 0; i < e.length; i++) {
-                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e[i].GoodsID + '">';
+            for (let i = 0; i < e.GoodsData.length; i++) {
+                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e.GoodsData[i].GoodsID + '">';
                 //html += '<tr id ="uid" data-uid="' + uid + '">';
                 html += '<th>';
                 html += '<label class="customcheckbox">';
@@ -85,8 +99,8 @@ function ShowModalNoGoodsBarcode() {
                 html += '<span class="checkmark"></span>';
                 html += '</label>';
                 html += '</th>';
-                html += '<td id="NoGoodsBarcode_GoodsName">"' + e[i].GoodsName + '"</td>';
-                html += '<td id="NoGoodsBarcode_GoodsPrice">"' + e[i].GoodsPrice + '"</td>';
+                html += '<td id="NoGoodsBarcode_GoodsName">' + e.GoodsData[i].GoodsName + '</td>';
+                html += '<td id="NoGoodsBarcode_GoodsPrice">' + numberWithCommas(parseFloat(e.GoodsData[i].GoodsPrice).toFixed(2)) + '</td>';
                 html += '</tr>';
             }
             $(".NoGoodsBarcode_Body").append(html);
@@ -141,10 +155,9 @@ $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
         }
         
         if (arrResult != null && arrResult.length > 0) {
-        for (let a = 0; a < arrResult.length; a++) {
-            transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
+            for (let a = 0; a < arrResult.length; a++) {
+                transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
+            }
         }
     }
-    }
-    
 });

@@ -18,24 +18,22 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
         data: {GoodsBarcode: $("#GoodsBarcodeSearch").val()},
         async: false,
         success: function(e) {
-            var index = null;
             if(e != null){
                 var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
-                if(GridGoods.length >= 1){
-                    var GoodsID = e.GoodsID;
-                    // index = GridGoods.map(x => {
-                    //     return GridGoods.uid;
-                    // }).indexOf(GoodsID);
-                    var index = GridGoods.find((x => x.GoodsID == GoodsID));
-                }
+                manageAdd_updateGoods(e,GridGoods,QtyBarcode);
 
-                if(index == null){
-                    var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
-                    transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
+                // if(GridGoods.length >= 1){
+                //     var GoodsID = e.GoodsID;
+                //     index = GridGoods.find((x => x.GoodsID == GoodsID));
+                // }
+
+                // if(index == null){
+                //     var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
+                //     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
                     
-                }else{
-                    transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
-                }   
+                // }else{
+                //     transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
+                // } 
             }
         },
         error: function(e) {
