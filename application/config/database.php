@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'SORAWIT\SQLEXPRESS',
+	'hostname' => 'SORAWIT\SQLEXPRESS', //DESKTOP-96QHBR3\SQLEXPRESS
 	'username' => 'sa',
-	'password' => '1234',
+	'password' => '1234', //prosoft@12345
 	'database' => 'db_sl_shop',
 	'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',
