@@ -10,17 +10,18 @@
       </div>
       <div class="modal-body">
         <div class="table-responsive">
-            <table class="table">
+            <!-- <table class="table">
                 <thead class="thead-light">
                     <tr>
-                        <th>
+                        <th class='w_5'>
                             <label class="customcheckbox m-b-20">
                                 <input type="checkbox" id="mainCheckbox" />
                                 <span class="checkmark"></span>
                             </label>
-                        </th>ชื่อสินค้า
-                        <th scope="col"></th>
-                        <th scope="col">ราคาสินค้า</th>
+                        </th>
+                        <th scope="col" class='w_10 text-center'>#</th>
+                        <th scope="col" class='w_70'>ชื่อสินค้า</th>
+                        <th scope="col" class='w_15 text-right'>ราคาสินค้า</th>
                     </tr>
                 </thead>
                 <tbody class="NoGoodsBarcode_Body">
@@ -28,10 +29,11 @@
                 </tbody>
                 <tfoot class='page'>
                 </tfoot>
-                <div>
-                  
-                </div>
-            </table>
+
+            </table> -->
+            <div class="page">
+            
+            </div>
         </div>
       </div>
       <div class="modal-footer">

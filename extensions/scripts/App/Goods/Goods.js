@@ -88,40 +88,50 @@ function ShowModalNoGoodsBarcode() {
         dataType: "json",
         traditional: true,
         success: function (e) {
-            TempDataNoGoodsBarcode = e.GoodsData;
-            var html = "";
-            for (let i = 0; i < e.GoodsData.length; i++) {
-                html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e.GoodsData[i].GoodsID + '">';
-                //html += '<tr id ="uid" data-uid="' + uid + '">';
-                html += '<th>';
-                html += '<label class="customcheckbox">';
-                html += '<input type="checkbox" class="chkNoGoodsBarcode" />';
-                html += '<span class="checkmark"></span>';
-                html += '</label>';
-                html += '</th>';
-                html += '<td id="NoGoodsBarcode_GoodsName">' + e.GoodsData[i].GoodsName + '</td>';
-                html += '<td id="NoGoodsBarcode_GoodsPrice">' + numberWithCommas(parseFloat(e.GoodsData[i].GoodsPrice).toFixed(2)) + '</td>';
-                html += '</tr>';
-            }
-            $(".NoGoodsBarcode_Body").append(html);
+            // TempDataNoGoodsBarcode = e.GoodsData;
+            // var html = "";
+            // for (let i = 0; i < e.GoodsData.length; i++) {
+                // html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e.GoodsData[i].GoodsID + '">';
+                // //html += '<tr id ="uid" data-uid="' + uid + '">';
+                // html += '<th>';
+                // html += '<label class="customcheckbox">';
+                // html += '<input type="checkbox" class="chkNoGoodsBarcode" />';
+                // html += '<span class="checkmark"></span>';
+                // html += '</label>';
+                // html += '</th>';
+                // html += '<td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>';
+                // html += '<td id="NoGoodsBarcode_GoodsName">' + e.GoodsData[i].GoodsName + '</td>';
+                // html += '<td id="NoGoodsBarcode_GoodsPrice" class="text-right">' + numberWithCommas(parseFloat(e.GoodsData[i].GoodsPrice).toFixed(2)) + '</td>';
+                // html += '</tr>';
+            //}
+            // $(".NoGoodsBarcode_Body").append(html);
+            $(".table-responsive").append(e.GoodsData);
+            $(".page").append(e.PageData);
 
-            var pagination = '<nav aria-label="...">';
-            pagination += '<ul class="pagination">';
+            // var pagination = '<nav aria-label="...">';
+            // pagination += '<ul class="pagination  justify-content-center">';
+            // pagination += '<li class="page-item disabled">';
+            // pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
+            // pagination += '</li>';
+
+            // for (let c = 0; c < e.PageData; c++) {
+            //     // var numPage = c+1;
+            //     // pagination += '<li class="page-item"><a class="page-link" href="#">' + numPage + '</a></li>';
+            // }
+            
                 
-            pagination += '<li class="page-item disabled">';
-            pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
-            pagination += '</li>';
-            pagination += '<li class="page-item"><a class="page-link" href="#">1</a></li>';
-            pagination += '<li class="page-item active">';
-            pagination += '<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>';
-            pagination += '</li>';
-            pagination += '<li class="page-item"><a class="page-link" href="#">3</a></li>';
-            pagination += '<li class="page-item">';
-            pagination += '<a class="page-link" href="#">Next</a>';
-            pagination += '</li>';
-            pagination += '</ul>';
-            pagination += ' </nav>';
-            $('.page').append(pagination);
+            
+            // pagination += '<li class="page-item active">';
+            // pagination += '<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>';
+            // pagination += '</li>';
+            // pagination += '<li class="page-item"><a class="page-link" href="#">3</a></li>';
+            // pagination += '<li class="page-item">';
+            // pagination += '<a class="page-link" href="#">Next</a>';
+            // pagination += '</li>';
+            // pagination += '</ul>';
+            // pagination += ' </nav>';
+            //var pagination = '<?php echo $this->pagination->create->link(); ?>'; 
+            //$('.page').append('<?php echo $this->pagination->create->link(); ?>');
         },
         error: function (e) {
             //openloading(false);

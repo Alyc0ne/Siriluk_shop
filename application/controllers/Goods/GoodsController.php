@@ -53,13 +53,28 @@ class GoodsController extends CI_Controller{
 
     public function getNoGoodsBarcode()
     {
-        $result = $this->BaseSystem->GetGoodsNoBarcode();
+        $Where = array('IsDelete' => 0,'IsBarcode' => 0);
+        $this->load->library('pagination');
+        $config = array();
+        $config['per_page'] = 5;
+        $config['total_rows'] = $this->db->where($Where)->count_all('smGoods');
+        $config['uri_segment'] = 3;
+        $config['use_page_numbers'] = true;
+        $config['num_links'] = 1;
+        $this->pagination->initialize($config);
+        $page = $this->uri->segment(3);
+        $start = ($page - 1 ) * $config['per_page'];
+
+        $result = $this->BaseSystem->GetGoodsNoBarcode($config['per_page'],$start);
+
         $arr = array(
             "GoodsData"=>$result,
-            "EEE"=>"Test"
+            "PageData"=>$this->pagination->create_links()
         );
 
         echo json_encode($arr);
+
+        //https://www.youtube.com/watch?v=nfDMTzmGi9Q
     }
 
 }

@@ -45,15 +45,54 @@ class BaseSystem extends CI_Model
         return $result;
     }
 
-    public function GetGoodsNoBarcode()
+    public function GetGoodsNoBarcode($limit,$start)
     {   
-        $Where = array('IsDelete' => 0,'IsBarcode' => 0);
-        $row_per_page = 5;
-        $total_data = $this->db->where($Where)->count_all('smGoods');
-        $total_page = ceil($total_data / $row_per_page);
         
-        $result = $this->db->where($Where)->get('smGoods')->result_array();
-        return $result;
+        //$data['pagination'] = 
+        $this->db->limit($limit,$start);
+        //$result = $this->db->where($Where)->get('smGoods',1,1)->result_array();
+        $table .= '
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="w_5">
+                            <label class="customcheckbox m-b-20">
+                                <input type="checkbox" id="mainCheckbox" />
+                                <span class="checkmark"></span>
+                            </label>
+                        </th>
+                        <th scope="col" class="w_10 text-center">#</th>
+                        <th scope="col" class="w_70">ชื่อสินค้า</th>
+                        <th scope="col" class="w_15 text-right">ราคาสินค้า</th>
+                    </tr>
+                </thead>
+                <tbody class="NoGoodsBarcode_Body">
+        ';
+        foreach ($result as $data) {
+            $table .= '
+                <tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="'. $data['GoodsID'] .'">
+                    <th>
+                    <label class="customcheckbox">
+                    <input type="checkbox" class="chkNoGoodsBarcode" />
+                    <span class="checkmark"></span>
+                    </label>
+                    </th>
+                    <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
+                    <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
+                    <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.numberWithCommas(parseFloat($data['GoodsPrice']).toFixed(2)).'</td>
+                </tr>
+            ';
+        }
+
+        $table .= '
+                </tbody>
+                    <!-- <tfoot class="page">
+                    </tfoot> -->
+
+            </table>
+        ';
+
+        return $table;
     }
     
 }
