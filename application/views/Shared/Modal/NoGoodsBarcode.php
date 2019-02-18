@@ -31,9 +31,10 @@
                 </tfoot>
 
             </table> -->
-            <div class="page">
+
+        </div>
+        <div class="page">
             
-            </div>
         </div>
       </div>
       <div class="modal-footer">

@@ -45,12 +45,16 @@ class BaseSystem extends CI_Model
         return $result;
     }
 
-    public function GetGoodsNoBarcode($limit,$start)
+    public function GetGoodsNoBarcode($ListGoods,$start)
     {   
+        if ($ListGoods != null) {
+            $result = $ListGoods[$start - 1];
+        }
         
-        //$data['pagination'] = 
-        $this->db->limit($limit,$start);
-        //$result = $this->db->where($Where)->get('smGoods',1,1)->result_array();
+        $table = '';
+        //( SELECT    ROW_NUMBER() OVER ( ORDER BY OrderDate ) AS RowNum,
+        //$result = $this->db->where($where)->get('smGoods',$start,$record_per_page)->result_array();
+        //$query = $this->db->where($where)->get('smGoods')->result_array();
         $table .= '
             <table class="table">
                 <thead class="thead-light">
@@ -70,7 +74,7 @@ class BaseSystem extends CI_Model
         ';
         foreach ($result as $data) {
             $table .= '
-                <tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="'. $data['GoodsID'] .'">
+                <tr id="uid" data-goodsid="'. $data['GoodsID'] .'">
                     <th>
                     <label class="customcheckbox">
                     <input type="checkbox" class="chkNoGoodsBarcode" />
@@ -79,7 +83,7 @@ class BaseSystem extends CI_Model
                     </th>
                     <td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>
                     <td id="NoGoodsBarcode_GoodsName">'. $data['GoodsName'] .'</td>
-                    <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.numberWithCommas(parseFloat($data['GoodsPrice']).toFixed(2)).'</td>
+                    <td id="NoGoodsBarcode_GoodsPrice" class="text-right">'.number_format((float)$data['GoodsPrice'], 2, '.', '').'</td>
                 </tr>
             ';
         }
@@ -92,7 +96,10 @@ class BaseSystem extends CI_Model
             </table>
         ';
 
-        return $table;
+        return $ResultData = array(
+            "ListGoods"=>$result,
+            "TableData"=>$table
+        );
     }
     
 }

@@ -20,7 +20,7 @@ $(document).on("change", "#GoodsBarcodeSearch", function(ae) {
         success: function(e) {
             if(e != null){
                 var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
-                manageAdd_updateGoods(e,GridGoods,QtyBarcode);
+                manageAdd_updateGoods(e,GridGoods,GridGoods,QtyBarcode);
 
                 // if(GridGoods.length >= 1){
                 //     var GoodsID = e.GoodsID;

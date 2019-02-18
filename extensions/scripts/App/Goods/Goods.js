@@ -78,46 +78,35 @@ function manageAdd_updateGoods(DataGoods,GridGoods,QtyBarcode) {
 }
 
 function ShowModalNoGoodsBarcode() {
+    GetNoGoodsBarcode();
     $("#NoGoodsBarcodeModal").modal();
+}
+
+function GetNoGoodsBarcode(page) {
     $.ajax({
         type: 'POST',
         url: base_url + "Goods/GoodsController/getNoGoodsBarcode",
         data: {
-            IsBarcode : false,
+            page : page,
         },
         dataType: "json",
         traditional: true,
         success: function (e) {
-            // TempDataNoGoodsBarcode = e.GoodsData;
-            // var html = "";
-            // for (let i = 0; i < e.GoodsData.length; i++) {
-                // html += '<tr id="uid" data-uid="' + RandomMath() + '" data-goodsid="' + e.GoodsData[i].GoodsID + '">';
-                // //html += '<tr id ="uid" data-uid="' + uid + '">';
-                // html += '<th>';
-                // html += '<label class="customcheckbox">';
-                // html += '<input type="checkbox" class="chkNoGoodsBarcode" />';
-                // html += '<span class="checkmark"></span>';
-                // html += '</label>';
-                // html += '</th>';
-                // html += '<td id="NoGoodsBarcode_QtyBarcode"><input type="number" style="height:5%;" class="text-center w_100" id="QtyBarcode" name="QtyBarcode" min="1" max="99" value="1"></td>';
-                // html += '<td id="NoGoodsBarcode_GoodsName">' + e.GoodsData[i].GoodsName + '</td>';
-                // html += '<td id="NoGoodsBarcode_GoodsPrice" class="text-right">' + numberWithCommas(parseFloat(e.GoodsData[i].GoodsPrice).toFixed(2)) + '</td>';
-                // html += '</tr>';
-            //}
-            // $(".NoGoodsBarcode_Body").append(html);
-            $(".table-responsive").append(e.GoodsData);
-            $(".page").append(e.PageData);
+            TempDataNoGoodsBarcode = e.GoodsData;
+            $(".table-responsive").html("");
+            $(".page").html("");
+            $(".table-responsive").append(e.TableData);
 
-            // var pagination = '<nav aria-label="...">';
-            // pagination += '<ul class="pagination  justify-content-center">';
-            // pagination += '<li class="page-item disabled">';
-            // pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
-            // pagination += '</li>';
+            var pagination = '<nav aria-label="...">';
+            pagination += '<ul class="pagination  justify-content-center">';
+            pagination += '<li class="page-item disabled">';
+            pagination += '<a class="page-link" href="#" tabindex="-1">Previous</a>';
+            pagination += '</li>';
 
-            // for (let c = 0; c < e.PageData; c++) {
-            //     // var numPage = c+1;
-            //     // pagination += '<li class="page-item"><a class="page-link" href="#">' + numPage + '</a></li>';
-            // }
+            for (let c = 0; c < e.PageData; c++) {
+                var numPage = c+1;
+                pagination += '<li class="page-item"><a class="page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
+            }
             
                 
             
@@ -125,13 +114,15 @@ function ShowModalNoGoodsBarcode() {
             // pagination += '<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>';
             // pagination += '</li>';
             // pagination += '<li class="page-item"><a class="page-link" href="#">3</a></li>';
-            // pagination += '<li class="page-item">';
-            // pagination += '<a class="page-link" href="#">Next</a>';
-            // pagination += '</li>';
-            // pagination += '</ul>';
-            // pagination += ' </nav>';
+            if (e.PageData > page) {
+                pagination += '<li class="page-item">';
+                pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
+                pagination += '</li>';
+            }
+            
+            pagination += ' </nav>';
             //var pagination = '<?php echo $this->pagination->create->link(); ?>'; 
-            //$('.page').append('<?php echo $this->pagination->create->link(); ?>');
+            $('.page').append(pagination);
         },
         error: function (e) {
             //openloading(false);
@@ -139,15 +130,20 @@ function ShowModalNoGoodsBarcode() {
     });
 }
 
+$(document).on('click', '.page-link', function(){  
+    var page = $(this).attr("id");  
+    GetNoGoodsBarcode(page);  
+});  
+
 $(document).on("click", ".chkNoGoodsBarcode", function (e) {
-    var uid = $(this).closest('tr').data("goodsid"); //GoodsID for rowGoods
+    var GoodsID = $(this).closest('tr').data("goodsid"); //GoodsID for rowGoods
     if($(".chkNoGoodsBarcode:checkbox:checked").length > numClick){
-        TempGoodsIDNoGoodsBarcode.push(uid);
+        TempGoodsIDNoGoodsBarcode.push(GoodsID);
         numClick++;
     }else{
         var index = TempGoodsIDNoGoodsBarcode.map(x => {
-            return x.uid;
-        }).indexOf(uid);
+            return x.GoodsID;
+        }).indexOf(GoodsID);
         TempGoodsIDNoGoodsBarcode.splice(index,1);
         numClick--;
     }
@@ -164,10 +160,14 @@ $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
             arrResult.push(result);
         }
         
+        var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
         if (arrResult != null && arrResult.length > 0) {
             for (let a = 0; a < arrResult.length; a++) {
-                transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
+                var QtyBarcode = $(".NoGoodsBarcode_Body").find('tr[data-goodsid=' + arrResult[a].GoodsID + '] td#NoGoodsBarcode_QtyBarcode input#QtyBarcode').val();
+                // transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
+                manageAdd_updateGoods(arrResult[a],GridGoods,QtyBarcode);
             }
         }
     }
+    $('#NoGoodsBarcodeModal').modal('toggle');
 });
