@@ -47,10 +47,10 @@ function ShowModalGoods() {
         $("#GoodsNo").val(GenRunningNumber("Goods"));
         GetDataJson('Unit','#GoodsUnit');
         $("#GoodsModal").modal();
-        // setTimeout(function(){
-        //     $("#GoodsBarcode").focus();
-        //     openloading(false);
-        // },700);
+        setTimeout(function(){
+            $("#GoodsBarcode").focus();
+            openloading(false);
+        },700);
     }
 }
 
@@ -62,20 +62,6 @@ $(document).on("click", "#IsBarcode", function () {
         $("#GoodsBarcode").prop("disabled",true);
     }
 });
-
-function manageAdd_updateGoods(DataGoods,GridGoods,QtyBarcode) {
-    var index = null;
-    if(GridGoods.length >= 1){
-        index = GridGoods.find((x => x.GoodsID == DataGoods.GoodsID));
-    }
-
-    if(index == null){
-        var GoodsPrice = transacSalesGoods.gridControl.addData(DataGoods.GoodsID,DataGoods.GoodsName,DataGoods.GoodsPrice,QtyBarcode);
-        transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
-    }else{
-        transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,DataGoods.GoodsPrice,QtyBarcode);
-    } 
-}
 
 function ShowModalNoGoodsBarcode() {
     GetNoGoodsBarcode();
@@ -108,12 +94,6 @@ function GetNoGoodsBarcode(page) {
                 pagination += '<li class="page-item"><a class="page-link" id=' + numPage + ' href="#">' + numPage + '</a></li>';
             }
             
-                
-            
-            // pagination += '<li class="page-item active">';
-            // pagination += '<a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>';
-            // pagination += '</li>';
-            // pagination += '<li class="page-item"><a class="page-link" href="#">3</a></li>';
             if (e.PageData > page) {
                 pagination += '<li class="page-item">';
                 pagination += '<a class="page-link" href="#" id=' + page + 1 + '>Next</a>';
@@ -121,7 +101,6 @@ function GetNoGoodsBarcode(page) {
             }
             
             pagination += ' </nav>';
-            //var pagination = '<?php echo $this->pagination->create->link(); ?>'; 
             $('.page').append(pagination);
         },
         error: function (e) {
@@ -165,9 +144,43 @@ $(document).on("click", "#btn-Select-NoGoodsBarcode", function (e) {
             for (let a = 0; a < arrResult.length; a++) {
                 var QtyBarcode = $(".NoGoodsBarcode_Body").find('tr[data-goodsid=' + arrResult[a].GoodsID + '] td#NoGoodsBarcode_QtyBarcode input#QtyBarcode').val();
                 // transacSalesGoods.gridControl.addData(arrResult[a].GoodsID,arrResult[a].GoodsName,arrResult[a].GoodsPrice,1);
-                manageAdd_updateGoods(arrResult[a],GridGoods,QtyBarcode);
+                manageAdd_updateGoods(QtyBarcode,arrResult[a],GridGoods);
             }
         }
     }
     $('#NoGoodsBarcodeModal').modal('toggle');
+});
+
+$(document).on("change", "#GoodsBarcodeSearch", function(ae) {
+    var QtyBarcode = $("#QtyBarcode").val();
+    $.ajax({
+        type: 'POST',
+        url: base_url + "Goods/GoodsController/getGoods",
+        dataType: 'json',
+        data: {GoodsBarcode: $("#GoodsBarcodeSearch").val()},
+        async: false,
+        success: function(e) {
+            if(e != null){
+                var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
+                manageAdd_updateGoods(QtyBarcode,e,GridGoods,GridGoods);
+
+                // if(GridGoods.length >= 1){
+                //     var GoodsID = e.GoodsID;
+                //     index = GridGoods.find((x => x.GoodsID == GoodsID));
+                // }
+
+                // if(index == null){
+                //     var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
+                //     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
+                    
+                // }else{
+                //     transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
+                // } 
+            }
+        },
+        error: function(e) {
+            //openloading(false);
+        }
+    });
+    $("#GoodsBarcodeSearch").val("");
 });

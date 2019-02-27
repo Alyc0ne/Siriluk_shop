@@ -9,39 +9,19 @@ $("#discountCash").change(function(e) {
 
 });
 
-$(document).on("change", "#GoodsBarcodeSearch", function(ae) {
-    var QtyBarcode = $("#QtyBarcode").val();
-    $.ajax({
-        type: 'POST',
-        url: base_url + "Goods/GoodsController/getGoods",
-        dataType: 'json',
-        data: {GoodsBarcode: $("#GoodsBarcodeSearch").val()},
-        async: false,
-        success: function(e) {
-            if(e != null){
-                var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
-                manageAdd_updateGoods(e,GridGoods,GridGoods,QtyBarcode);
+function manageAdd_updateGoods(QtyBarcode,DataGoods,TransactionGoods) {
+    var index = null;
+    if(TransactionGoods.length >= 1){
+        index = TransactionGoods.find((x => x.GoodsID == DataGoods.GoodsID));
+    }
 
-                // if(GridGoods.length >= 1){
-                //     var GoodsID = e.GoodsID;
-                //     index = GridGoods.find((x => x.GoodsID == GoodsID));
-                // }
-
-                // if(index == null){
-                //     var GoodsPrice = transacSalesGoods.gridControl.addData(e.GoodsID,e.GoodsName,e.GoodsPrice,QtyBarcode);
-                //     transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
-                    
-                // }else{
-                //     transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,e.GoodsPrice,QtyBarcode);
-                // } 
-            }
-        },
-        error: function(e) {
-            //openloading(false);
-        }
-    });
-    $("#GoodsBarcodeSearch").val("");
-});
+    if(index == null){
+        var GoodsPrice = transacSalesGoods.gridControl.addData(DataGoods.GoodsID,DataGoods.GoodsName,DataGoods.GoodsPrice,QtyBarcode);
+        transacSalesGoods.gridControl.calSummary(true,parseFloat(GoodsPrice));
+    }else{
+        transacSalesGoods.gridControl.updateGoodsByIndex(index.uid,DataGoods.GoodsPrice,QtyBarcode);
+    } 
+}
 
 $(document).on("click",".imageDel", function(e){
     var uid = $(this).closest("#GoodDetail").data("uid");
@@ -77,11 +57,46 @@ function numberWithCommas(x) {
 }
 
 $(document).on("click","#SaveInvoice", function () {
-    var chkGoods = transacSalesGoods.gridControl.selectDataGrid().length;
-    if (chkGoods > 0) {
+    var GridGoods = transacSalesGoods.gridControl.selectDataGrid().length;
+    if (GridGoods > 0) {
         $("#ConfrimModal").modal();
+        //if ($('#ConfrimModal').is(':visible')) {
+            $("#Confrim_SaveInvoice").click(function () {
+                SaveInvoice(function (callback) {
+                    if (!!callback) {
+                        console.log("true");
+                    }
+                });
+            });
+        //}
     }else{
         bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาเพิ่มสินค้า</center>");
     }
     
 })
+
+function SaveInvoice(callback) {
+    var GridGoods = transacSalesGoods.gridControl.selectDataGrid();
+    if (GridGoods.length > 0) {
+        $.ajax({
+            type: 'POST',
+            url: base_url + "Goods/GoodsController/SaveInvoice",
+            dataType: 'json',
+            data: {
+                "GoodsData" : JSON.stringify(GridGoods)
+            },
+            async: false,
+            traditional: true,
+            success: function (e) {
+                //console.log("PPPPP");
+                callback(true);
+            },
+            error: function (e) {
+                console.log("eeeee");
+                //openloading(false);
+            }
+        });
+    }else{
+
+    }
+}
