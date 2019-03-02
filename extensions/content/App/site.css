@@ -99,8 +99,8 @@ span.imageDel {
     color: #fff;
     background-color: #007bff;
 }
-.testRed{
-    background-color: red;
+.text-red{
+    color: #b94a48;
 }
 
 .text-ellipsis {
@@ -108,5 +108,9 @@ span.imageDel {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+.error{
+    color: #b94a48;
+}
 
  

@@ -83,7 +83,6 @@ function bindValidate(frm) {
 
                 if (el.length > 0) {
                     el.each(function() {
-                        //ปรับไปเช็คแบบ name เนื่องจากมีปัญหากรณี define field service ใช้แต่ class
                         if (!!$(this).attr("name") && $(this).attr("name") != "TitleNameEnumID") {
                             var dis = $(this).prop('disabled');
                             var visible = $(this).is(":visible");
@@ -115,7 +114,7 @@ function bindValidate(frm) {
                 }
                 if (!valResult) {
                     $(this).find("input[type=text],input[type=password], select, textarea").eq(0).parent().find("div.error").remove();
-                    $(this).find("input[type=text],input[type=password], select:not('#TitleNameEnumID'), textarea").eq(0).parent().append("<div class='error'><label class='error'>required field</label></div>");
+                    $(this).find("input[type=text],input[type=password], select:not('#TitleNameEnumID'), textarea").eq(0).parent().append("<div class='error'><label class='error'>กรุณากรอกข้อมูล</label></div>");
                 }
             }
         });
@@ -223,11 +222,7 @@ function checkDataTable(system) {
             if (e > 0) {
                 result = true;
             } else {
-                bootbox.alert({
-                    title: "ไม่สามารถดำเนินการได้",
-                    message: "กรุณากำหนดหน่วยนับสินค้าก่อน!",
-                    size: 'large'
-                });
+                AlertModal("กรุณากำหนดหน่วยนับสินค้าก่อน!");
                 openloading(false);
             }
         },
@@ -295,4 +290,10 @@ function RandomMath() {
         .substring(1);
     }
     return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+}
+
+function AlertModal(AlertText) {
+    var html = "<h3 class='text-center text-red'>" + AlertText +  "</h3>";
+    $("#AlertModal").modal();
+    $("#Alert-body").html(html);
 }

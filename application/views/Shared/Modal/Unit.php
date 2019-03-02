@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="UnitName" class="col-sm-2 col-form-label require">ชื่อหน่วยนับ : </label>
+                <label for="UnitName" class="col-sm-2 col-form-label require"><span class='text-red'>*</span> ชื่อหน่วยนับ : </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="UnitName" name="UnitName" data-maxlength='250' >
                 </div>

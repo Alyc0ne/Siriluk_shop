@@ -1,6 +1,7 @@
 //Unit
 function ShowModalUnit() {
     //openloading(true);
+    $("#GoodsModal").html();
     $.ajax({
         type: 'POST',
         url: base_url + "Base/BaseController/GenRunningNumber",
