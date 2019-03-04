@@ -65,6 +65,8 @@ $(document).on("click","#SaveInvoice", function () {
                 SaveInvoice(function (callback) {
                     if (!!callback) {
                         console.log("true");
+                    }else{  
+                        bootbox.alert("<center>ไม่สามารถดำเนินการต่อได้<br>กรุณาติดต่อผู้ดูแลระบบ</center>");
                     }
                 });
             });
@@ -80,7 +82,7 @@ function SaveInvoice(callback) {
     if (GridGoods.length > 0) {
         $.ajax({
             type: 'POST',
-            url: base_url + "Goods/GoodsController/SaveInvoice",
+            url: base_url + "Invoice/InvoiceController/SaveInvoice",
             dataType: 'json',
             data: {
                 "GoodsData" : JSON.stringify(GridGoods)
@@ -88,12 +90,10 @@ function SaveInvoice(callback) {
             async: false,
             traditional: true,
             success: function (e) {
-                //console.log("PPPPP");
                 callback(true);
             },
             error: function (e) {
-                console.log("eeeee");
-                //openloading(false);
+                callback(false);
             }
         });
     }else{

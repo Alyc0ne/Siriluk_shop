@@ -223,11 +223,9 @@ function checkDataTable(system) {
             if (e > 0) {
                 result = true;
             } else {
-                bootbox.alert({
-                    title: "ไม่สามารถดำเนินการได้",
-                    message: "กรุณากำหนดหน่วยนับสินค้าก่อน!",
-                    size: 'large'
-                });
+                if (system == "Unit") {
+                    
+                }
                 openloading(false);
             }
         },
