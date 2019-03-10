@@ -9,9 +9,9 @@ class UnitController extends CI_Controller{
         try{
             $data=array(
                 "UnitID"=>substr(uniqid(), 3), //10 หลัก
-                "UnitNo"=>$this->input->post("unit_no"),
-                "UnitName"=>$this->input->post("unit_name"),
-                "UnitQty"=>$this->input->post("unit_qty"),
+                "UnitNo"=>$this->input->post("UnitNo"),
+                "UnitName"=>$this->input->post("UnitName"),
+                "UnitQty"=>1,
                 "CreatedBy"=>null,
                 "CreatedDate"=>date("Y-m-d H:i:s"),
                 "ModifiedBy"=>null,

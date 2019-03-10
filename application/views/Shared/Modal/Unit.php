@@ -24,12 +24,12 @@
                     <input type="text" class="form-control" id="UnitName" name="UnitName" data-maxlength='250' >
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="UnitQty" class="col-sm-2 col-form-label require">จำนวนหน่วยนับ : </label>
+            <!-- <div class="form-group row">
+                <label for="UnitQty" class="col-sm-2 col-form-label">จำนวนหน่วยนับ : </label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="UnitQty" name="UnitQty" data-maxlength='100' value='1'>
                 </div>
-            </div>
+            </div> -->
         </form>
       </div>
       <div class="modal-footer">

@@ -74,6 +74,7 @@ function bindValidate(frm) {
     var IsResult = true;
     if ($(frm).length > 0) {
         $(frm).find("div.error").remove();
+        $(frm).find("input.border_red").removeClass("border_red");
         var tab = [];
         var frmControl = $(frm + " .require").parent();
         $.each(frmControl, function(i, e) {
@@ -113,14 +114,12 @@ function bindValidate(frm) {
                     });
                 }
                 if (!valResult) {
+                    $(this).find("input[type=text],input[type=password], select, textarea").eq(0).addClass("border_red");
                     $(this).find("input[type=text],input[type=password], select, textarea").eq(0).parent().find("div.error").remove();
                     $(this).find("input[type=text],input[type=password], select:not('#TitleNameEnumID'), textarea").eq(0).parent().append("<div class='error'><label class='error'>กรุณากรอกข้อมูล</label></div>");
                 }
             }
         });
-
-
-
 
         var checkError = $(frm).find("div.error").length;
         if (checkError > 0) {
@@ -176,12 +175,12 @@ function GetDataJson(system, idSelect2 = null) {
         type: 'POST',
         url: base_url + "Base/BaseController/GetDataJson",
         data: { "System": system },
-        datatype: "json",
+        dataType: "json",
         traditional: true,
         async: false,
         success: function(e) {
-            Result = JSON.parse(e);
-            if (idSelect2 != null) { SetDataSelect2(Result, idSelect2) }
+            //Result = JSON.parse(e);
+            if (idSelect2 != null) { SetDataSelect2(e, idSelect2) }
         },
         error: function(e) {
             //openloading(false);
@@ -195,8 +194,8 @@ function SetDataSelect2(arr, name) {
     var item = {};
     for (var i = 0; i < arr.length; i++) {
         item = {
-            id: arr[i].unit_id,
-            text: arr[i].unit_name + " (" + arr[i].unit_qty + ")"
+            id: arr[i].UnitID,
+            text: arr[i].UnitName
         };
         data.push(item);
     }

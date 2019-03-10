@@ -125,4 +125,8 @@ span.imageDel {
     color: #b94a48;
 }
 
+.border_red{
+    border: solid 1px red !important;
+}
+
  

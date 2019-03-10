@@ -30,9 +30,9 @@ $(document).on("click", "#btn-SaveUnit", function () {
             type: 'POST',
             url: base_url + "Unit/UnitController/BindSave",
             data: {
-                "unit_no" : $("#UnitNo").val(),
-                "unit_name" : $("#UnitName").val(),
-                "unit_qty" : $("#UnitQty").val()
+                "UnitNo" : $("#UnitNo").val(),
+                "UnitName" : $("#UnitName").val(),
+                "UnitQty" : $("#UnitQty").val()
             },
             datatype: "json",
             traditional: true,

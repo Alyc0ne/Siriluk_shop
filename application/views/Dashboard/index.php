@@ -136,7 +136,7 @@
                     <div class="col-md-12">
                         <div class="row">
                             <?php 
-                            if (count($result) > 0) {
+                            if (strlen($result) > 0) {
                                 $Arr = ([
                                     "result" => $result,
                                     "Icon_Edit" => $Icon_Edit,
