@@ -12,6 +12,12 @@ class GoodsController extends CI_Controller{
         $this->load->view("Dashboard/index",$data);
     }
 
+    public function edit()
+    {
+        $data['path_link'] = "Goods/edit";
+        $this->load->view("Dashboard/index",$data);
+    }
+
     public function BindSave(){
         try{
             $System = $this->BaseSystem->GenSystem('Unit');

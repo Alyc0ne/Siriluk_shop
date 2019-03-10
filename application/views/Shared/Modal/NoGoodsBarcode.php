@@ -1,4 +1,6 @@
 <link href="<?php echo base_url(); ?>ex/css/multicheck.css" rel="stylesheet">
+<script src="<?php echo base_url(); ?>extensions/scripts/App/Goods/NoGoodsBarcode.js"></script>
+
 <div class="modal fade" id="NoGoodsBarcodeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
     <div class="modal-content">
@@ -10,27 +12,6 @@
       </div>
       <div class="modal-body">
         <div class="table-responsive">
-            <!-- <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th class='w_5'>
-                            <label class="customcheckbox m-b-20">
-                                <input type="checkbox" id="mainCheckbox" />
-                                <span class="checkmark"></span>
-                            </label>
-                        </th>
-                        <th scope="col" class='w_10 text-center'>#</th>
-                        <th scope="col" class='w_70'>ชื่อสินค้า</th>
-                        <th scope="col" class='w_15 text-right'>ราคาสินค้า</th>
-                    </tr>
-                </thead>
-                <tbody class="NoGoodsBarcode_Body">
-
-                </tbody>
-                <tfoot class='page'>
-                </tfoot>
-
-            </table> -->
 
         </div>
         <div class="page">

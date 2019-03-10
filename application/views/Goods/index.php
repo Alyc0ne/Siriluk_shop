@@ -20,7 +20,7 @@
                 echo "<td>",$Goods['GoodsBarcode'],"</td>";
                 echo "<td>",$Goods['GoodsName'],"</td>";
                 echo "<td>",$Goods['GoodsQty'],"</td>";
-                echo "<td>",$Goods['GoodsPrice'],"</td>";
+                echo "<td>".number_format((float)$Goods['GoodsPrice'], 2, '.', ',')."</td>";
             echo "</tr>";
             //$num++;
           }else {
