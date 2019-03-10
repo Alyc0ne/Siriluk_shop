@@ -52,6 +52,8 @@
         $this->load->view("Shared/Modal/Confrim");
         $this->load->view("Shared/Modal/NoGoodsBarcode");
         $this->load->view("Shared/Modal/Alert");
+        $Icon_Edit = "<span class='m_r5 '><img src=".base_url()."extensions\images\icon\Edit_16.png class='pointer'></span>";
+        $Icon_Delete = "<span><img src=".base_url()."extensions\images\icon\Delete_16.png class='pointer'></span>";
     ?>
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
@@ -134,7 +136,16 @@
                     <div class="col-md-12">
                         <div class="row">
                             <?php 
+                            if (count($result) > 0) {
+                                $Arr = ([
+                                    "result" => $result,
+                                    "Icon_Edit" => $Icon_Edit,
+                                    "Icon_Delete" => $Icon_Delete
+                                ]);
+                                $this->load->view($path_link,$Arr); 
+                            }else {
                                 $this->load->view($path_link); 
+                            }
                             ?>
                         </div>
 

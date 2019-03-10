@@ -84,30 +84,6 @@ class GoodsController extends CI_Controller{
         //https://www.youtube.com/watch?v=nfDMTzmGi9Q
         //https://www.youtube.com/watch?v=xME6uHYTcLU Debug PHP
     }
-
-    public function SaveInvoice()
-    {
-       $GoodsData = $this->input->post('GoodsData');
-       $De_GoodsData = json_decode($GoodsData,true);
-    //    foreach ($De_GoodsData as $_GoodsData) {
-    //         $data[] = array(
-    //             'InvoiceID' => $_GoodsData['first_name'],
-    //             'GoodsID' => $_GoodsData['GoodsID'],
-    //             'GoodsName' => $_GoodsData['GoodsName'],
-    //             'GoodsQty' => $_GoodsData['GoodsQty'],
-    //             'GoodsPrice' => $_GoodsData['GoodsPrice'],
-    //             'TotalAmnt' => $_GoodsData['TotalAmnt'],
-    //             "CreatedBy"=>null,
-    //             "CreatedDate"=>date("Y-m-d H:i:s"),
-    //             "ModifiedBy"=>null,
-    //             "ModifiedDate"=>date("Y-m-d H:i:s"),
-    //             "IsDelete"=>false,
-    //         );
-    //    }
-
-       echo json_encode($De_GoodsData);
-    }
-
 }
 
 

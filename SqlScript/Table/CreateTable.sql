@@ -45,3 +45,42 @@ CREATE TABLE [dbo].[smUnit](
 )
 END
 GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoice') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].[soInvoice](
+	[InvoiceID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[InvoiceNo] VARCHAR(50) NOT NULL, 
+	[InvoiceQty] DECIMAL(20,2) NOT NULL,
+	[InvoiceTradeDisc] DECIMAL(20,2) NOT NULL,
+	[InvoiceDetailDisc] DECIMAL(20,2) NOT NULL,
+	[InvoiceTotalAmnt] DECIMAL(20,2) NOT NULL,
+	[CreatedBy] VARCHAR(50) DEFAULT NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL
+)
+END
+GO
+
+IF NOT EXISTS(SELECT 1 FROM sys.Objects WHERE  Object_id = OBJECT_ID(N'dbo.soInvoice_Item') AND Type = N'U')
+BEGIN
+CREATE TABLE [dbo].[soInvoice_Item](
+	[InvoiceItemID] VARCHAR(50) PRIMARY KEY NOT NULL,
+	[InvoiceID] VARCHAR(50) NOT NULL,
+	[GoodsID] VARCHAR(50) NOT NULL,
+	[GoodsNo] VARCHAR(50) NOT NULL,
+	[GoodsBarcode] VARCHAR(20) NULL,
+	[GoodsName] VARCHAR(255) NOT NULL,
+	[GoodsQty] DECIMAL(20,2) NOT NULL,
+	[GoodsPrice] DECIMAL(20,2) NOT NULL,
+	[GoodsTotalAmnt] DECIMAL(20,2) NOT NULL,
+	[CreatedBy] VARCHAR(50) DEFAULT NULL,
+	[CreatedDate] DATETIME NOT NULL,
+	[ModifiedBy] VARCHAR(50) DEFAULT NULL,
+	[ModifiedDate] DATETIME NOT NULL,
+	[IsDelete] BIT NOT NULL
+)
+END
+GO

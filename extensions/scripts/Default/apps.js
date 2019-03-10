@@ -219,10 +219,18 @@ function checkDataTable(system) {
         traditional: true,
         async: false,
         success: function(e) {
+            var txtAlert = "";
             if (e > 0) {
                 result = true;
             } else {
-                AlertModal("กรุณากำหนดหน่วยนับสินค้าก่อน!");
+                switch (system) {
+                    case "Unit":
+                        txtAlert = "กรุณากำหนดหน่วยนับสินค้าก่อน!";
+                    break;
+                    default:
+                        break;
+                }
+                AlertModal(txtAlert);
                 openloading(false);
             }
         },

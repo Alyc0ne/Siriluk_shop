@@ -20,6 +20,7 @@
         $this->load->view("Shared/Modal/Goods");
         $this->load->view("Shared/Modal/Unit");
         $this->load->view("Shared/Modal/Confrim");
+        $this->load->view("Shared/Modal/Alert");
     ?>
     <div class="wrap">
         <div class="bg-backdrop"></div>

@@ -34,8 +34,14 @@ span.imageDel {
 .h_100{
     height: 100% !important;
 }
+.w_1{
+    width: 1% !important;
+}
 .w_5{
     width: 5% !important;
+}
+.w_6{
+    width: 6% !important;
 }
 .w_10{
     width: 10% !important;
@@ -77,6 +83,9 @@ span.imageDel {
 .p_a5{
     padding: 5px !important;
 }
+.m_a5{
+    margin: 5px !important;
+}
 .m_t5{
     margin-top: 5px !important;
 }
@@ -102,12 +111,15 @@ span.imageDel {
 .text-red{
     color: #b94a48;
 }
-
 .text-ellipsis {
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
+.text-red{
+    color:red;
+}
+.pointer {cursor: pointer;}
 
 .error{
     color: #b94a48;
